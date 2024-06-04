@@ -1,0 +1,26 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 40px;
+
+  .blockNavigation {
+	display: flex;
+	gap: 50px;
+  }
+
+	a {
+	  color: #5775CD;
+	  font-size: 20px;
+	  font-style: normal;
+	  font-weight: 700;
+	  line-height: normal;
+	  border-radius: 20px;
+	  background: #FFC849;
+	  padding: 7px 16px;
+	}
+
+
+
+
+}
