@@ -1,0 +1,23 @@
+@import '../../../styles/mixins.scss';
+
+.container {
+    @include container;
+}
+
+.overlay {
+    @include overlay;
+}
+
+.login__container {
+    width: 424px;
+    height: 264px;
+    padding: 20px;
+    // background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 200, 73, 1);
+    margin: auto;
+    z-index: 2;
+}
