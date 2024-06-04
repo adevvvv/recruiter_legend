@@ -1,0 +1,18 @@
+@import '../../../styles/mixins.scss';
+
+.popup {
+    @include popup(73rem);
+}
+
+.login-popup {
+    width: 424px;
+    height: 264px;
+    padding: 20px;
+    // background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 200, 73, 1);
+
+}
