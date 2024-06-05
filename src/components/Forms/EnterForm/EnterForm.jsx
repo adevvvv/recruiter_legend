@@ -15,7 +15,7 @@ const EnterForm = () => {
       // Handle registration
     };
     return (
-        <div className={styles['overlay']}>
+        // <div className={styles['overlay']}>
             <div className={styles['container']}>
                 <Header />
                 <div className={styles['login__container']}>
@@ -27,7 +27,7 @@ const EnterForm = () => {
                 </div>
                 <img alt={'bottomImage'} src={bottomImage}/>
             </div>
-        </div>
+        // </div>
     )
 }
 
