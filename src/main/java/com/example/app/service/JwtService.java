@@ -1,6 +1,5 @@
 package com.example.app.service;
 
-
 import com.example.app.domain.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -43,7 +42,7 @@ public class JwtService {
         if (userDetails instanceof User customUserDetails) {
             claims.put("id", customUserDetails.getId());
             claims.put("email", customUserDetails.getEmail());
-            claims.put("role", customUserDetails.getRole());
+            claims.put("role", customUserDetails.getRole().name());
         }
         return generateToken(claims, userDetails);
     }

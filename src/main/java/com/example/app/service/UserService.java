@@ -1,5 +1,6 @@
 package com.example.app.service;
 
+import com.example.app.domain.dto.UserDetailsWithRole;
 import com.example.app.domain.model.Role;
 import com.example.app.domain.model.User;
 import com.example.app.repository.UserRepository;
@@ -86,5 +87,11 @@ public class UserService {
         var user = getCurrentUser();
         user.setRole(Role.ROLE_ADMIN);
         save(user);
+    }
+
+    public UserDetailsWithRole getCurrentUserWithRole() {
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        var user = getByUsername(username);
+        return new UserDetailsWithRole(user, user.getRole());
     }
 }
