@@ -1,7 +1,8 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin: 50px 40px;
+  margin: 30px 40px;
+  align-items: center;
 }
 .header .blockNavigation {
   display: flex;
@@ -16,6 +17,19 @@
   border-radius: 20px;
   background: #FFC849;
   padding: 7px 16px;
+}
+.header .blockIcon {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.header .blockIcon .notifications {
+  width: 60px;
+  height: 60px;
+}
+.header .blockIcon .profile {
+  width: 70px;
+  height: 70px;
 }
 
 /*# sourceMappingURL=Header.module.css.map */
