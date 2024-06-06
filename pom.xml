@@ -33,6 +33,12 @@
 			<version>42.7.3</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>6.1.8</version>
+		</dependency>
+
 		<!-- Утилиты -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
