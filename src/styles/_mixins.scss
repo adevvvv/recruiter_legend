@@ -68,3 +68,16 @@
 	line-height: normal;
 	padding: 7px 33px 6px 48px;
 }
+
+@mixin input-error {
+    border: 1px solid red;
+}
+
+@mixin enter-form-error {
+    color: red;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    padding-bottom: 1rem;      
+}
