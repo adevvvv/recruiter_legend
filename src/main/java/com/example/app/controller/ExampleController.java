@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/example")
+@RequestMapping("/")
 @RequiredArgsConstructor
 @Tag(name = "Примеры", description = "Примеры запросов с разными правами доступа")
 public class ExampleController {
@@ -20,19 +20,13 @@ public class ExampleController {
     @GetMapping
     @Operation(summary = "Доступен только авторизованным пользователям")
     public String example() {
-        return "Hello, world!";
+        return "Доступен только авторизованным пользователям";
     }
 
     @GetMapping("/admin")
     @Operation(summary = "Доступен только авторизованным пользователям с ролью ADMIN")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String exampleAdmin() {
         return "Hello, admin!";
-    }
-
-    @GetMapping("/get-admin")
-    @Operation(summary = "Получить роль ADMIN (для демонстрации)")
-    public void getAdmin() {
-        service.getAdmin();
     }
 }

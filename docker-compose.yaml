@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgresql
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: db_users
     ports:
       - "5432:5432"
