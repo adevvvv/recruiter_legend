@@ -5,6 +5,7 @@ import EnterForm from "./components/Forms/EnterForm/EnterForm.jsx";
 import { Route, Routes } from 'react-router-dom';
 import Calendar from "./components/Calendar/Calendar.jsx";
 import ProfileApplicant from './components/ProfileApplicant/ProfileApplicant.jsx';
+import BaseInfo from './components/ProfileApplicant/BaseInfo.jsx';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
                 <Route path= "/auth/login" element ={ <EnterForm/>} />
                 <Route path="/calendar" element={<Calendar/>} />
                 <Route path="/applicant" element={<ProfileApplicant/>} />
+                <Route path="/applicantinfo" element={<BaseInfo/>} />
             </Routes>
         </>
     )
