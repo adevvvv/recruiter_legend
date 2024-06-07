@@ -1,0 +1,45 @@
+.container {
+  margin-top: 50px;
+}
+.container h2 {
+  margin-bottom: 50px;
+}
+.container .scroll::-webkit-scrollbar {
+  visibility: hidden;
+}
+.container .scroll {
+  overflow-x: scroll;
+  display: flex;
+  gap: 20px;
+}
+.container .scroll .windowDate {
+  white-space: normal;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+.container .scroll .selectedDate {
+  background-color: greenyellow;
+}
+.container .blockTime {
+  margin-top: 30px;
+  display: flex;
+  gap: 30px;
+}
+.container .blockTime .time {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  white-space: nowrap;
+}
+.container .blockTime .selectedTime {
+  background-color: greenyellow;
+}
+.container button {
+  margin-top: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=Calendar.module.css.map */

@@ -1,0 +1,35 @@
+.popup {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(8px);
+  position: fixed;
+  z-index: 98 !important;
+  top: 0;
+  left: 0;
+  padding-top: 18.5rem;
+  padding-bottom: 18.5rem;
+  transform: scale(0);
+}
+.popup__container {
+  position: relative;
+  margin: auto;
+  max-width: 73rem;
+  width: 100%;
+  opacity: 1;
+}
+.popup.active {
+  transform: scale(1);
+}
+
+.login-popup {
+  width: 424px;
+  height: 264px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(255, 200, 73);
+}
+
+/*# sourceMappingURL=PopupLoginForm.css.map */
