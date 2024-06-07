@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import Header from "../../Header/Header";
 import bottomImage from '../../../assets/image/bottomImage.png';
 import styles from './EnterForm.module.scss';
@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 const EnterForm = () => {
     // const [email, setEmail] = useState('');
     // const [password, setPassword] = useState('');
-
+    const [answer, setAnswer] = useState(null); // Добавлено состояние для хранения ответа на запрос
     const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'onChange' });
 
     const handleLogin = () => {
@@ -18,7 +18,7 @@ const EnterForm = () => {
       // Handle registration
     };
 
-    const onSubmit =  (data) => {
+    const onSubmit = async(data) => {
         const { email, password } = data;
         if (!email) {
             return;
