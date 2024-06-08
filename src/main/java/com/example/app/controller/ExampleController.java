@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 @RequiredArgsConstructor
-@Tag(name = "Примеры", description = "Примеры запросов с разными правами доступа")
+@Tag(name = "Админ", description = "Примеры запросов с разными правами доступа")
 public class ExampleController {
     private final UserService service;
 
     @GetMapping
     @Operation(summary = "Доступен только авторизованным пользователям")
     public String example() {
-        return "Доступен только авторизованным пользователям";
+        return "Hello, admin!";
     }
 
     @GetMapping("/admin")
