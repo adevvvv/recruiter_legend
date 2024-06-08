@@ -10,13 +10,13 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/db_users
+    url: jdbc:postgresql://postgres:5432/db_users
     username: postgres
-    password: postgres
+    password: password
 #  mail:
-#    host: smtp.gmail.com
+#    host: smtp.gmail.comqq
 #    port: 587
-#    username: info.recruiter.legend@gmail.com
+#    username:
 #    password:
 #    properties:
 #      mail:
