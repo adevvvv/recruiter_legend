@@ -1,11 +1,10 @@
 import styles from "./ProfileApplicant.module.scss";
 import profile from "../../assets/image/profile.svg";
-import chep from "../../assets/image/chep.png";
 import vk from "../../assets/image/vk.png";
 import whatsapp from "../../assets/image/whatsapp.png";
 import telegram from "../../assets/image/telegram.png";
 import {useState} from "react";
-import {ButtonWithChain} from "../Button/buttons.jsx";
+import {ButtonWithChain} from "../Common/buttons.jsx";
 
 
 const BaseInfo = ({setIsFormInfo}) => {

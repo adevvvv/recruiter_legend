@@ -6,17 +6,19 @@ import { Route, Routes } from 'react-router-dom';
 import Calendar from "./components/Calendar/Calendar.jsx";
 import ProfileApplicant from './components/ProfileApplicant/ProfileApplicant.jsx';
 import BaseInfo from './components/ProfileApplicant/BaseInfo.jsx';
+import Anketa from "./components/Anketa/Anketa.jsx";
 
 function App() {
 
     return (
         <>
             <Routes>
-                <Route path="/" element={<HomePage/>} />
+                {/*<Route path="/" element={<HomePage/>} />*/}
                 <Route path= "/auth/login" element ={ <EnterForm/>} />
                 <Route path="/calendar" element={<Calendar/>} />
                 <Route path="/applicant" element={<ProfileApplicant/>} />
                 <Route path="/applicantinfo" element={<BaseInfo/>} />
+                <Route path="/" element={<Anketa/>} />
             </Routes>
         </>
     )
