@@ -1,5 +1,6 @@
 package com.example.app.service;
 
+import com.example.app.domain.dto.UserDTO;
 import com.example.app.domain.dto.UserDetailsWithRole;
 import com.example.app.domain.model.Role;
 import com.example.app.domain.model.User;
@@ -9,12 +10,41 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository repository;
 
+
+    @Transactional
+    public User createUser(UserDTO userDTO) {
+        User user = User.builder()
+                .username(userDTO.getUsername())
+                .password(userDTO.getPassword())
+                .email(userDTO.getEmail())
+                .role(userDTO.getRole())
+                .build();
+        return repository.save(user);
+    }
+
+    @Transactional
+    public void deleteUser(Long userId) {
+        repository.deleteById(userId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<User> getAllUsers() {
+        return repository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public List<User> searchUsersByUsername(String username) {
+        return repository.findByUsernameContainingIgnoreCase(username);
+    }
     /**
      * Сохранение пользователя
      *

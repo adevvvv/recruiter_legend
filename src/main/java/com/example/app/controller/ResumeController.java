@@ -2,6 +2,7 @@ package com.example.app.controller;
 
 import com.example.app.domain.model.Resume;
 import com.example.app.service.ResumeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/resume")
+@Tag(name = "Заполнение резюме соискателя")
 public class ResumeController {
     @Autowired
     private ResumeService resumeService;
