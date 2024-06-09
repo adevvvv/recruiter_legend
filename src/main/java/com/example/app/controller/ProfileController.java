@@ -2,9 +2,10 @@ package com.example.app.controller;
 
 import com.example.app.domain.model.Profile;
 import com.example.app.service.ProfileService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/profile")
-@Api(value = "Profile Management System", description = "Операции, связанные с профилем в системе управления профилями")
 @Tag(name = "Профиль соискателя")
 public class ProfileController {
 
@@ -29,31 +29,30 @@ public class ProfileController {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    @ApiOperation(value = "Получить профиль по ID")
+    @Operation(summary = "Получить профиль по ID")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")
     @GetMapping("/{id}")
     public ResponseEntity<Profile> getProfileById(
-            @ApiParam(value = "ID профиля, по которому будет извлекаться объект профиля", required = true) @PathVariable Long id) {
+            @Parameter(description = "ID профиля, по которому будет извлекаться объект профиля", required = true) @PathVariable Long id) {
         Optional<Profile> profile = profileService.getProfileById(id);
         return profile.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-
-    @ApiOperation(value = "Создать новый профиль")
+   /* @Operation(summary = "Создать новый профиль")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")
     @PostMapping
     public ResponseEntity<String> createProfile(
-            @ApiParam(value = "Имя", required = true) @RequestParam("firstName") String firstName,
-            @ApiParam(value = "Фамилия", required = true) @RequestParam("lastName") String lastName,
-            @ApiParam(value = "Отчество", required = true) @RequestParam("middleName") String middleName,
-            @ApiParam(value = "Дата рождения в формате dd.MM.yyyy", required = true) @RequestParam("birthDate") String birthDate,
-            @ApiParam(value = "Город", required = true) @RequestParam("city") String city,
-            @ApiParam(value = "Номер телефона", required = true) @RequestParam("phoneNumber") String phoneNumber,
-            @ApiParam(value = "Email", required = true) @RequestParam("email") String email,
-            @ApiParam(value = "Ссылка на VK", required = true) @RequestParam("vkLink") String vkLink,
-            @ApiParam(value = "Ссылка на Telegram", required = true) @RequestParam("telegramLink") String telegramLink,
-            @ApiParam(value = "Ссылка на WhatsApp", required = true) @RequestParam("whatsappLink") String whatsappLink/*,
-            @ApiParam(value = "Фотография профиля", required = true) @RequestParam("photo") MultipartFile photo,
-            @ApiParam(value = "Файл резюме", required = true) @RequestParam("resumeFile") MultipartFile resumeFile*/) throws IOException {
+            @Parameter(description = "Имя", required = true) @RequestParam("firstName") String firstName,
+            @Parameter(description = "Фамилия", required = true) @RequestParam("lastName") String lastName,
+            @Parameter(description = "Отчество", required = true) @RequestParam("middleName") String middleName,
+            @Parameter(description = "Дата рождения в формате dd.MM.yyyy", required = true) @RequestParam("birthDate") String birthDate,
+            @Parameter(description = "Город", required = true) @RequestParam("city") String city,
+            @Parameter(description = "Номер телефона", required = true) @RequestParam("phoneNumber") String phoneNumber,
+            @Parameter(description = "Email", required = true) @RequestParam("email") String email,
+            @Parameter(description = "Ссылка на VK", required = true) @RequestParam("vkLink") String vkLink,
+            @Parameter(description = "Ссылка на Telegram", required = true) @RequestParam("telegramLink") String telegramLink,
+            @Parameter(description = "Ссылка на WhatsApp", required = true) @RequestParam("whatsappLink") String whatsappLink,
+            @Parameter(description = "Фотография профиля", required = true) @RequestParam("photo") MultipartFile photo,
+            @Parameter(description = "Файл резюме", required = true) @RequestParam("resumeFile") MultipartFile resumeFile) throws IOException {
         Profile profile = new Profile();
         profile.setFirstName(firstName);
         profile.setLastName(lastName);
@@ -72,30 +71,32 @@ public class ProfileController {
         profile.setVkLink(vkLink);
         profile.setTelegramLink(telegramLink);
         profile.setWhatsappLink(whatsappLink);
-/*        profile.setPhoto(photo.getBytes());
-        profile.setResumeFile(resumeFile.getBytes());*/
+        profile.setPhoto(photo.getBytes());
+        profile.setResumeFile(resumeFile.getBytes());
 
         profileService.createOrUpdateProfile(profile);
         return ResponseEntity.ok("Профиль успешно создан");
-    }
+    }*/
 
-    @ApiOperation(value = "Обновить существующий профиль")
+
+
+    @Operation(summary = "Обновить существующий профиль")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")
     @PutMapping("/{id}")
     public ResponseEntity<Profile> updateProfile(
-            @ApiParam(value = "ID профиля для обновления объекта профиля", required = true) @PathVariable Long id,
-            @ApiParam(value = "Имя", required = true) @RequestParam("firstName") String firstName,
-            @ApiParam(value = "Фамилия", required = true) @RequestParam("lastName") String lastName,
-            @ApiParam(value = "Отчество", required = true) @RequestParam("middleName") String middleName,
-            @ApiParam(value = "Дата рождения в формате dd.MM.yyyy", required = true) @RequestParam("birthDate") String birthDate,
-            @ApiParam(value = "Город", required = true) @RequestParam("city") String city,
-            @ApiParam(value = "Номер телефона", required = true) @RequestParam("phoneNumber") String phoneNumber,
-            @ApiParam(value = "Email", required = true) @RequestParam("email") String email,
-            @ApiParam(value = "Ссылка на VK", required = true) @RequestParam("vkLink") String vkLink,
-            @ApiParam(value = "Ссылка на Telegram", required = true) @RequestParam("telegramLink") String telegramLink,
-            @ApiParam(value = "Ссылка на WhatsApp", required = true) @RequestParam("whatsappLink") String whatsappLink/*,
-            @ApiParam(value = "Фотография профиля", required = true) @RequestParam("photo") MultipartFile photo,
-            @ApiParam(value = "Файл резюме", required = true) @RequestParam("resumeFile") MultipartFile resumeFile*/) throws IOException {
+            @Parameter(description = "ID профиля для обновления объекта профиля", required = true) @PathVariable Long id,
+            @Parameter(description = "Имя", required = true) @RequestParam("firstName") String firstName,
+            @Parameter(description = "Фамилия", required = true) @RequestParam("lastName") String lastName,
+            @Parameter(description = "Отчество", required = true) @RequestParam("middleName") String middleName,
+            @Parameter(description = "Дата рождения в формате dd.MM.yyyy", required = true) @RequestParam("birthDate") String birthDate,
+            @Parameter(description = "Город", required = true) @RequestParam("city") String city,
+            @Parameter(description = "Номер телефона", required = true) @RequestParam("phoneNumber") String phoneNumber,
+            @Parameter(description = "Email", required = true) @RequestParam("email") String email,
+            @Parameter(description = "Ссылка на VK", required = true) @RequestParam("vkLink") String vkLink,
+            @Parameter(description = "Ссылка на Telegram", required = true) @RequestParam("telegramLink") String telegramLink,
+            @Parameter(description = "Ссылка на WhatsApp", required = true) @RequestParam("whatsappLink") String whatsappLink,
+            @Parameter(description = "Фотография профиля", required = true) @RequestParam("photo") MultipartFile photo,
+            @Parameter(description = "Файл резюме", required = true) @RequestParam("resumeFile") MultipartFile resumeFile) throws IOException {
         Optional<Profile> existingProfile = profileService.getProfileById(id);
 
         if (existingProfile.isPresent()) {
@@ -117,8 +118,8 @@ public class ProfileController {
             profile.setVkLink(vkLink);
             profile.setTelegramLink(telegramLink);
             profile.setWhatsappLink(whatsappLink);
-/*            profile.setPhoto(photo.getBytes());
-            profile.setResumeFile(resumeFile.getBytes());*/
+            profile.setPhoto(photo.getBytes());
+            profile.setResumeFile(resumeFile.getBytes());
 
             return ResponseEntity.ok(profileService.createOrUpdateProfile(profile));
         } else {
@@ -126,11 +127,11 @@ public class ProfileController {
         }
     }
 
-    @ApiOperation(value = "Удалить профиль по ID")
+    @Operation(summary = "Удалить профиль по ID")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProfile(
-            @ApiParam(value = "ID профиля, по которому объект профиля будет удален из базы данных", required = true) @PathVariable Long id) {
+            @Parameter(description = "ID профиля, по которому объект профиля будет удален из базы данных", required = true) @PathVariable Long id) {
         profileService.deleteProfile(id);
         return ResponseEntity.noContent().build();
     }
