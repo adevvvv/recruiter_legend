@@ -127,7 +127,7 @@ const RegistrationForm = () => {
             })}
             className={`${styles['form-input']} ${errors.email ? styles['input-error'] : ''}`}
             type="password"
-            placeholder="придумайте пароль"
+            placeholder="Придумайте пароль"
             autoComplete="current-password"
             // onChange={handlePasswordChange}
           />
