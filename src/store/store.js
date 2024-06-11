@@ -66,25 +66,35 @@ export default class Store {
     }
   }
 
-  async registration({name, email, password}) {
+  async registration({ name, email, password }) {
     try {
-      console.log(name,email),password;
-      const response = await axios.post(API_URL+'/sign-up', {name, email, password}, {
-        'Content-Type': 'application/json'
-      }); 
+      console.log(name, email), password;
+      const response = await axios.post(
+        API_URL + '/sign-up',
+        { name, email, password },
+        {
+          'Content-Type': 'application/json',
+        },
+      );
       localStorage.setItem('token', response.data.token);
       console.log(response);
       this.setAuth(true);
-      this.setUser({name:response.data.name, email:response.data.email, role:response.data.role});      
+      this.setUser({
+        name: response.data.name,
+        email: response.data.email,
+        role: response.data.role,
+      });
       return true;
     } catch (e) {
-      this.errorRegistration = JSON.parse(e.response?.request?.responseText).email[0] || JSON.parse(e.response?.request?.responseText).password[0] || JSON.parse(e.response?.request?.responseText).name[0];
+      this.errorRegistration =
+        JSON.parse(e.response?.request?.responseText).email[0] ||
+        JSON.parse(e.response?.request?.responseText).password[0] ||
+        JSON.parse(e.response?.request?.responseText).name[0];
       console.log(this.errorRegistration);
-      
+
       // console.log(e.response?.data?.message|| e.response?.data?.detail||e.response?.request?.responseText|| e);
     }
   }
-
 
   async logout() {
     localStorage.removeItem('token');
