@@ -20,6 +20,8 @@ function App() {
                 <Route path="/calendar" element={<Calendar/>} />
                 <Route path="/applicant" element={<ProfileApplicant/>} />
                 <Route path="/applicantinfo" element={<BaseInfo/>} />
+                <Route path="/register" element={<RegistrationForm/>} />
+                <Route path="/resume" element={<Resume/>} />
                 <Route path="/anketa" element={<Anketa/>} />
             </Routes>
         </>
