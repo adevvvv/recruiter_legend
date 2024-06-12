@@ -1,5 +1,5 @@
 # Используем базовый образ Maven для сборки проекта
-FROM maven:latest as builder
+FROM maven:latest AS builder
 
 # Копируем файлы проекта в контейнер
 COPY . /app

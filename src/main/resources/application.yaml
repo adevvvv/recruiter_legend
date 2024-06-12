@@ -1,30 +1,13 @@
 spring:
-  application:
-    name: recruiter_legend
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 10MB
-      max-request-size: 10MB
+  datasource:
+    url: jdbc:sqlite:data/recruiter_legend.db
+    driver-class-name: org.sqlite.JDBC
   jpa:
     hibernate:
       ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: jdbc:postgresql://postgres:5432/db_recruiter_legend
-    username: postgres
-    password: password
-#  mail:
-#    host: smtp.gmail.comqq
-#    port: 587
-#    username:
-#    password:
-#    properties:
-#      mail:
-#        smtp:
-#          auth: true
-#          starttls:
-#            enable: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.SQLiteDialect
 
 token:
   signing:
