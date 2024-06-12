@@ -6,23 +6,24 @@ import { Route, Routes } from 'react-router-dom';
 import Calendar from './components/Calendar/Calendar.jsx';
 import ProfileApplicant from './components/ProfileApplicant/ProfileApplicant.jsx';
 import BaseInfo from './components/ProfileApplicant/BaseInfo.jsx';
+import Anketa from "./components/Anketa/Anketa.jsx";
 import Resume from './components/ProfileApplicant/Resume.jsx';
 import RegistrationForm from './components/Forms/RegistrationForm/RegistrationForm.jsx';
 
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/auth/login" element={<EnterForm />} />
-        <Route path="/auth/register" element={<RegistrationForm />} />
-        <Route path="/calendar" element={<Calendar />} />
-        <Route path="/applicant" element={<ProfileApplicant />} />
-        <Route path="/applicantinfo" element={<BaseInfo />} />
-        <Route path="/resume" element={<Resume />} />
-      </Routes>
-    </>
-  );
+
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<HomePage/>} />
+                <Route path= "/auth/login" element ={ <EnterForm/>} />
+                <Route path="/calendar" element={<Calendar/>} />
+                <Route path="/applicant" element={<ProfileApplicant/>} />
+                <Route path="/applicantinfo" element={<BaseInfo/>} />
+                <Route path="/anketa" element={<Anketa/>} />
+            </Routes>
+        </>
+    )
 }
 
 export default App;
