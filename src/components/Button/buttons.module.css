@@ -1,0 +1,21 @@
+.resume {
+  position: relative;
+  display: flex;
+}
+.resume button {
+  border-radius: 20px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 10px 40px 10px 50px;
+  border: none;
+  cursor: pointer;
+}
+.resume .chain {
+  position: absolute;
+  top: 10px;
+  left: 18px;
+}
+
+/*# sourceMappingURL=buttons.module.css.map */

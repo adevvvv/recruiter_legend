@@ -3,10 +3,9 @@
   border-radius: 20px;
   background: rgba(255, 200, 73, 0.80);
   display: flex;
-  padding: 20px;
+  padding: 40px 20px;
   justify-content: center;
   gap: 20px;
-  width: 60%;
 
 
   .blockForm {
@@ -38,28 +37,7 @@
 	  gap: 30px;
 	  justify-content: center;
 
-	  .resume {
-		position: relative;
 
-		button {
-		  border-radius: 20px;
-		  background: #6C7FBD;
-		  color: #FFF;
-		  font-size: 20px;
-		  font-style: normal;
-		  font-weight: 700;
-		  line-height: normal;
-		  padding: 7px 33px 6px 48px;
-
-		}
-
-		.chep {
-		  position: absolute;
-		  top: 10px;
-		  left: 18px;
-		}
-
-	  }
 	}
 
   }
@@ -68,12 +46,57 @@
 }
 
 .containerImg {
-  position: relative;
-  bottom: 72px;
-  left: 23px;
+  //position: relative;
+  //bottom: 72px;
+  //left: 23px;
+  position: absolute;
+  right: 4vw;
+  top: 60vh;
   display: flex;
   justify-content: right;
   //margin: 30px 0;
   margin: 0;
 }
 
+.containerResume {
+  border-radius: 20px;
+  background: #7991D7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px 70px;
+  margin-top: 100px;
+
+  h1 {
+	color: #FFF;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+  }
+
+  p {
+	color: #FFF;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+  }
+
+
+  button {
+	cursor: pointer;
+	color: #5775CD;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	border-radius: 20px;
+	background: #FFF;
+	padding: 10px 35px;
+	border: none;
+  }
+
+
+}
