@@ -1,10 +1,10 @@
 .container {
   border-radius: 20px;
-  background: rgba(87, 117, 205, 0.80);
+  background: #A08DFA;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  //width: 50%;
   text-align: left;
   padding: 39px 29px;
 
@@ -52,7 +52,7 @@
 	line-height: normal;
   }
 
-  input {
+  input, select {
 	border-radius: 20px;
 	background: #FFF;
 	border: none;
