@@ -20,17 +20,13 @@
   line-height: normal;
 }
 .container .addPhoto {
-  width: 160px;
-  height: 160px;
   border-radius: 20px;
   background: #FFF;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
   text-align: center;
-  margin-bottom: 30px;
 }
 .container .addPhoto p {
   color: #5775CD;
@@ -52,12 +48,7 @@
   border: none;
   padding: 5px;
   margin-bottom: 5px;
-  height: 31px;
-}
-.container .rightInput input {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+  width: 401px;
 }
 .container button {
   color: #5775CD;
@@ -69,7 +60,6 @@
   background: #FFF;
   padding: 5px 40px;
   border: none;
-  width: 179px;
 }
 .container .selectedGender {
   color: #FFF;
@@ -81,16 +71,7 @@
   align-items: center;
   border-radius: 20px;
   background: #FFF;
-  width: 100%;
-  height: 63px;
-}
-.container .inputSkills::placeholder {
-  color: #5775CD;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  white-space: normal;
+  width: 50%;
 }
 
-/*# sourceMappingURL=Anketa.module.css.map */
+/*# sourceMappingURL=Anketa.module2.css.map */

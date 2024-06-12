@@ -1,6 +1,7 @@
 import styles from './ProfileApplicant.module.scss';
 import {ButtonWithChain} from "../Common/buttons.jsx";
 import {useRef, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const Resume = () => {
 
@@ -19,12 +20,18 @@ const Resume = () => {
         }
     };
 
+    const navigate = useNavigate();
+
+    const goToAnketa = () => {
+        navigate('/anketa');
+    }
+
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
             <div className={styles['containerResume']}>
                 <h1>У вас еще нет резюме</h1>
                 <div>
-                    <button style={{marginBottom: '20px'}}>Добавить</button>
+                    <button onClick={goToAnketa} style={{marginBottom: '20px'}}>Добавить</button>
 
                     <div onClick={handleButtonClick}>
                         <ButtonWithChain text={'Прикрепить'} color={'#5775CD'} background={'#FFF'}/>
