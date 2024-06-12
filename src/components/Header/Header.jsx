@@ -2,12 +2,16 @@
 // import LoginPopup from '../Popups/PopupLoginForm/PopupLoginForm';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import notifications from '../../assets/image/notifications.svg';
 import profile from '../../assets/image/profile.svg';
+import { Context } from '../../main';
+import { observer } from 'mobx-react-lite';
 
-const Header = ({ isRole }) => {
+// eslint-disable-next-line react-refresh/only-export-components
+const Header = () => {
   // const [popupLoginFormActive, setPopupLoginFormActive] = useState(false);
+  const { store } = useContext(Context);
 
   return (
     <div className={styles['header']}>
@@ -22,7 +26,7 @@ const Header = ({ isRole }) => {
       </div>
 
       {
-        isRole ? (
+        store.userData.role ? (
           <div className={styles['blockIcon']}>
             <img
               className={styles['notifications']}
@@ -41,4 +45,5 @@ const Header = ({ isRole }) => {
   );
 };
 
-export default Header;
+// eslint-disable-next-line react-refresh/only-export-components
+export default observer(Header); 

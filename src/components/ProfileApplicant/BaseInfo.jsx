@@ -5,7 +5,7 @@ import vk from '../../assets/image/vk.png';
 import whatsapp from '../../assets/image/whatsapp.png';
 import telegram from '../../assets/image/telegram.png';
 import { useState } from 'react';
-import { ButtonWithChain } from '../Button/buttons.jsx';
+import { ButtonWithChain } from '../Common/buttons';
 
 const BaseInfo = ({ setIsFormInfo }) => {
   const [formData, setFormData] = useState({
