@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Header from '../../Header/Header';
 import bottomImage from '../../../assets/image/bottomImage.png';
 import styles from './EnterForm.module.scss';
 import { useForm } from 'react-hook-form';
+import { Context } from '../../../main';
+import { observer } from 'mobx-react-lite';
+import { Link, useNavigate } from 'react-router-dom';
 
+// eslint-disable-next-line react-refresh/only-export-components
 const EnterForm = () => {
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
+  const { store } = useContext(Context);
+  const navigate = useNavigate();
+
   const [answer, setAnswer] = useState(null); // Добавлено состояние для хранения ответа на запрос
   const {
     register,
@@ -14,17 +21,18 @@ const EnterForm = () => {
     formState: { errors },
   } = useForm({ mode: 'onChange' });
 
-  const handleLogin = () => {
-    // Handle login
-  };
+  // const handleLogin = () => {
+  //   // Handle login
+  // };
 
   const handleRegister = () => {
-    // Handle registration
+    navigate('/register');
   };
 
   const onSubmit = async (data) => {
-    const { email, password } = data;
-    if (!email) {
+    // const { email, password } = data;
+    const { username, password } = data;
+    if (!username) {
       return;
     }
 
@@ -32,7 +40,21 @@ const EnterForm = () => {
       return;
     }
 
-    console.log('userData', { email, password });
+    console.log('userData', { username, password });
+    const answer = await store.login(username, password);
+    setAnswer(answer);
+
+    if (answer === 'anketa is exist') {
+      navigate('/anketa');
+      return;
+    }
+
+    if (answer === 'anketa is not exist') {
+      navigate('/');
+      return;
+    }
+
+
   };
 
   return (
@@ -41,7 +63,39 @@ const EnterForm = () => {
       <Header />
       <div className={styles['login__container']}>
         <form className="enter-form" onSubmit={handleSubmit(onSubmit)}>
-          <input
+
+        <input
+            {...register('username', {
+              required: true,
+              minLength: 2,
+              maxLength: 30,
+              pattern: /^[a-zA-Zа-яА-Я-]+(?:-[a-zA-Zа-яА-Я-]+)?$/,
+            })}
+            className={`${styles['form-input']} ${errors.username ? styles['input-error'] : ''}`}
+            type="text"
+            id="name"
+            placeholder="Введите ваше имя"
+          />
+          {errors.username?.type === 'minLength' && (
+            <span className={styles['enter-error']}>
+              Имя должно содержать не менее 8 символов{' '}
+            </span>
+          )}
+          {errors.username?.type === 'maxLength' && (
+            <span className={styles['enter-error']}>
+              Имя должно содержать не более 30 символов{' '}
+            </span>
+          )}
+          {errors.username?.type === 'pattern' && (
+            <span className={styles['enter-error']}>
+              Имя должно состоять из букв. Дефис допускается{' '}
+            </span>
+          )}
+          {errors.username?.type === 'required' && (
+            <span className={styles['enter-error']}>Это поле обязательно</span>
+          )}
+
+          {/* <input
             {...register('email', {
               required: 'Это поле не может быть пустым',
               pattern: {
@@ -61,7 +115,7 @@ const EnterForm = () => {
 
           {errors.email && (
             <p className={styles['enter-error']}>{errors.email.message}</p>
-          )}
+          )} */}
 
           <input
             {...register('password', {
@@ -84,7 +138,7 @@ const EnterForm = () => {
             <p className={styles['enter-error']}>{errors.password.message}</p>
           )}
 
-          <button onClick={handleLogin}>Вход</button>
+          <button  type="submit">Вход</button>
           <button onClick={handleRegister}>Регистрация</button>
           <a href="#">Забыли пароль?</a>
         </form>
@@ -95,4 +149,5 @@ const EnterForm = () => {
   );
 };
 
-export default EnterForm;
+// eslint-disable-next-line react-refresh/only-export-components
+export default observer(EnterForm);

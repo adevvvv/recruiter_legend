@@ -1,41 +1,38 @@
-// import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Header from '../../Header/Header';
 import bottomImage from '../../../assets/image/bottomImage.png';
 import styles from './RegistrationForm.module.scss';
 import { useForm } from 'react-hook-form';
-// import { Context } from '../../../main';
-import { Link } from 'react-router-dom';
+import { Context } from '../../../main';
+import { Link, useNavigate } from 'react-router-dom';
 
 const RegistrationForm = () => {
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
-  // const { store } = useContext(Context);
+  const { store } = useContext(Context);
+  const navigate = useNavigate();
   //   const [answer, setAnswer] = useState(null); // Добавлено состояние для хранения ответа на запрос
   const {
     register,
     handleSubmit,
     watch,
-    // reset,
+    reset,
     formState: { errors },
   } = useForm({ mode: 'onChange' });
 
   const password = watch('password');
 
-  const handleRegister = () => {
-    // Handle registration
-  };
 
-  const onSubmit = async (data) => {
-    const { email, password } = data;
-    if (!email) {
-      return;
-    }
-
-    if (!password) {
-      return;
-    }
-
-    console.log('userData', { email, password });
+  const onSubmit = async(data) => {
+    if (data.password !== data.password_repeat) {
+      return;}
+    console.log(data);
+    reset();
+    const isRegOk =await store.registration({username: data.username, email: data.email, password: data.password});
+    if(isRegOk){
+      store.errorRegistration = '';
+      navigate('/applicantinfo');
+    } 
   };
 
   return (
@@ -49,33 +46,33 @@ const RegistrationForm = () => {
           </h2>
 
           <input
-            {...register('name', {
+            {...register('username', {
               required: true,
               minLength: 2,
               maxLength: 30,
               pattern: /^[a-zA-Zа-яА-Я-]+(?:-[a-zA-Zа-яА-Я-]+)?$/,
             })}
-            className={`${styles['form-input']} ${errors.name ? styles['input-error'] : ''}`}
+            className={`${styles['form-input']} ${errors.username ? styles['input-error'] : ''}`}
             type="text"
             id="name"
             placeholder="Введите ваше имя"
           />
-          {errors.name?.type === 'minLength' && (
+          {errors.username?.type === 'minLength' && (
             <span className={styles['enter-error']}>
               Имя должно содержать не менее 8 символов{' '}
             </span>
           )}
-          {errors.name?.type === 'maxLength' && (
+          {errors.username?.type === 'maxLength' && (
             <span className={styles['enter-error']}>
               Имя должно содержать не более 30 символов{' '}
             </span>
           )}
-          {errors.name?.type === 'pattern' && (
+          {errors.username?.type === 'pattern' && (
             <span className={styles['enter-error']}>
               Имя должно состоять из букв. Дефис допускается{' '}
             </span>
           )}
-          {errors.name?.type === 'required' && (
+          {errors.username?.type === 'required' && (
             <span className={styles['enter-error']}>Это поле обязательно</span>
           )}
 
@@ -191,7 +188,7 @@ const RegistrationForm = () => {
             </p>
           </label>
 
-          <button onClick={handleRegister}>Регистрация</button>
+          <button>Регистрация</button>
         </form>
       </div>
       <img alt={'bottomImage'} src={bottomImage} />

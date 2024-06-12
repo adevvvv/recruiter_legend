@@ -41,9 +41,9 @@ export default class Store {
     localStorage.setItem('token', access);
   }
 
-  async login(email, password) {
+  async login(username, password) {
     try {
-      const response = await AuthService.login(email, password);
+      const response = await AuthService.login(username, password);
       this.setAuth(true);
       //   this.setTokens({refresh:response.data.refresh, access:response.data.access});
       this.setTokens({ access: response.data.token });
@@ -60,18 +60,18 @@ export default class Store {
       console.log(
         error.response?.data?.message ||
           error.response?.data?.detail ||
-          error.response?.detail,
+          error.response?.detail || error,
       );
       return error.response.status;
     }
   }
 
-  async registration({ name, email, password }) {
+  async registration({ username, email, password }) {
     try {
-      console.log(name, email), password;
+      console.log(username, email), password;
       const response = await axios.post(
         API_URL + '/sign-up',
-        { name, email, password },
+        { username, email, password },
         {
           'Content-Type': 'application/json',
         },
@@ -80,17 +80,19 @@ export default class Store {
       console.log(response);
       this.setAuth(true);
       this.setUser({
-        name: response.data.name,
-        email: response.data.email,
+        username: username,
+        // email: response.data.email,
         role: response.data.role,
       });
+      console.log(this.userData);
       return true;
-    } catch (e) {
-      this.errorRegistration =
-        JSON.parse(e.response?.request?.responseText).email[0] ||
-        JSON.parse(e.response?.request?.responseText).password[0] ||
-        JSON.parse(e.response?.request?.responseText).name[0];
+    } catch (error) {
+      this.errorRegistration =error
+        // JSON.parse(e.response?.request?.responseText).email[0] ||
+        // JSON.parse(e.response?.request?.responseText).password[0] ||
+        // JSON.parse(e.response?.request?.responseText).username[0]; 
       console.log(this.errorRegistration);
+ 
 
       // console.log(e.response?.data?.message|| e.response?.data?.detail||e.response?.request?.responseText|| e);
     }

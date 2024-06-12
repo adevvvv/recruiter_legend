@@ -1,5 +1,5 @@
 import styles from './ProfileApplicant.module.scss';
-import { ButtonWithChain } from '../Button/buttons.jsx';
+import { ButtonWithChain } from '../Common/buttons.jsx';
 import { useRef, useState } from 'react';
 
 const Resume = () => {
