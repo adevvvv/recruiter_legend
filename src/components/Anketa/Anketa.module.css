@@ -7,6 +7,18 @@
   text-align: left;
   padding: 39px 29px;
 }
+.container .btnSubmit {
+  color: #5775CD;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 20px;
+  background: #FFC849;
+}
+.container .rightColumn {
+  justify-items: right;
+}
 .container .block {
   display: flex;
   justify-content: space-around;

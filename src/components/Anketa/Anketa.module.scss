@@ -8,6 +8,22 @@
   text-align: left;
   padding: 39px 29px;
 
+  .btnSubmit {
+	color: #5775CD;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	border-radius: 20px;
+	background: #FFC849;
+
+  }
+
+  .rightColumn {
+
+	justify-items: right;
+  }
+
   .block {
 	display: flex;
 	//gap: 150px;

@@ -1,13 +1,13 @@
 
 
 
-const BlockSelect = ({ id, date, width, title, marginTop='0'}) => {
+const BlockSelect = ({ id, date, width, title, marginTop='0', handleChange}) => {
 
     return (
         <div style={{marginTop:marginTop}}>
             <label>{title}</label>
             <br/>
-            <select style={{width: `${width}`}} id={id}>
+            <select name={id} onBlur={handleChange} style={{width: `${width}`}} id={id}>
                 {
                     date.map((el, i) =>
                         <option key={i} value={el}>{el}</option>
