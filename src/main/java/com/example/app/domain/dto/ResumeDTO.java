@@ -25,6 +25,7 @@ public class ResumeDTO {
     private String employmentType;
     private List<LanguageDTO> languages;
     private List<WorkExperienceDTO> workExperienceList;
+    private List<String> skills;
 
 }
 

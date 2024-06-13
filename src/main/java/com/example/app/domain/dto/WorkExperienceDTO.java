@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,4 +15,5 @@ public class WorkExperienceDTO {
     private boolean currentlyWorking;
     private String position;
     private String responsibilities;
+    private String companyName;
 }

@@ -1,13 +1,11 @@
 package com.example.app.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,4 +19,5 @@ public class WorkExperience {
     private boolean currentlyWorking;
     private String position;
     private String responsibilities;
+    private String companyName;
 }

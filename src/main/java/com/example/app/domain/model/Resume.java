@@ -40,6 +40,9 @@ public class Resume {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WorkExperience> workExperienceList = new ArrayList<>();
 
+    @ElementCollection
+    private List<String> skills = new ArrayList<>();
+
     private String message;
     private String resumeAttachment;
     private boolean consentToProcessPersonalData;
