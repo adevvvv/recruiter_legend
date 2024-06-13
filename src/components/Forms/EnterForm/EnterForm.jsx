@@ -69,7 +69,7 @@ const EnterForm = () => {
               required: true,
               minLength: 2,
               maxLength: 30,
-              pattern: /^[a-zA-Zа-яА-Я-]+(?:-[a-zA-Zа-яА-Я-]+)?$/,
+              // pattern: /^[a-zA-Zа-яА-Я-]+(?:-[a-zA-Zа-яА-Я-]+)?$/,
             })}
             className={`${styles['form-input']} ${errors.username ? styles['input-error'] : ''}`}
             type="text"
@@ -86,11 +86,11 @@ const EnterForm = () => {
               Имя должно содержать не более 30 символов{' '}
             </span>
           )}
-          {errors.username?.type === 'pattern' && (
+          {/* {errors.username?.type === 'pattern' && (
             <span className={styles['enter-error']}>
               Имя должно состоять из букв. Дефис допускается{' '}
             </span>
-          )}
+          )} */}
           {errors.username?.type === 'required' && (
             <span className={styles['enter-error']}>Это поле обязательно</span>
           )}
