@@ -1,0 +1,8 @@
+FROM maven:latest AS builder
+COPY . /app
+WORKDIR /app
+RUN mvn clean package
+FROM openjdk:21
+WORKDIR /app
+COPY --from=builder /app/target/recruiter_legend-0.0.1-SNAPSHOT.jar /app/recruiter_legend.jar
+CMD ["java", "-jar", "recruiter_legend.jar"]
