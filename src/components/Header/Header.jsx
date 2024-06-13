@@ -33,7 +33,9 @@ const Header = () => {
               src={notifications}
               alt="notifications"
             />
-            <img className={styles['profile']} src={profile} alt="profile" />
+             <Link to="/applicant">
+              <img className={styles['profile']} src={profile} alt="profile" />
+            </Link>
           </div>
         ) : (
           /* <a href="#" onClick={ () => setPopupLoginFormActive(true) }>вход</a> */
