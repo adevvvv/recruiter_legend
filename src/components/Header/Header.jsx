@@ -28,17 +28,18 @@ const Header = ({ isRole, setIsRole }) => {
     };
   }, []);
 
-  return (
-    <div className={styles['header']}>
-      <div>
-        <div className={styles['blockNavigation']}>
-          <div style={{ marginRight: '90px' }}>LOGO</div>
-          <Link to="/">главная</Link>
-          {/* <a href="#">главная</a> */}
-          <a href="#">вакансии</a>
-          <a href="#">новости</a>
-        </div>
-      </div>
+    return (
+        <div className={styles['header']}>
+
+            <div>
+                <div className={styles['blockNavigation']}>
+                    <div style={{marginRight: '90px'}}>LOGO</div>
+                    <Link to="/">главная</Link>
+                    {/* <a href="#">главная</a> */}
+                    <a href="/vacancy">вакансии</a>
+                    <a href="#">новости</a>
+                </div>
+            </div>
 
       {
         isRole === 'applicant' ? (

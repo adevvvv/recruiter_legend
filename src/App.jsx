@@ -6,13 +6,15 @@ import { Route, Routes } from 'react-router-dom';
 import Calendar from './components/Calendar/Calendar.jsx';
 import ProfileApplicant from './components/ProfileApplicant/ProfileApplicant.jsx';
 import BaseInfo from './components/ProfileApplicant/BaseInfo.jsx';
-import Anketa from './components/Anketa/Anketa.jsx';
+import Anketa from "./components/Anketa/Anketa.jsx";
+import Vacancy from "./components/Vacancy/Vacancy.jsx";
 import Resume from './components/ProfileApplicant/Resume.jsx';
 import RegistrationForm from './components/Forms/RegistrationForm/RegistrationForm.jsx';
 import ProfileRecruiter from './components/ProfileRecruiter/ProfileRecruiter.jsx';
 import ResponseCard from './components/ProfileRecruiter/ResponseCard.jsx';
 
 function App() {
+
   return (
     <>
       <Routes>
@@ -26,6 +28,7 @@ function App() {
         <Route path="/anketa" element={<Anketa />} />
         <Route path="/recruiter" element={<ProfileRecruiter />} />
         <Route path="/responsecard" element={<ResponseCard />} />
+        <Route path="/vacancy" element={<Vacancy/>} />
       </Routes>
     </>
   );

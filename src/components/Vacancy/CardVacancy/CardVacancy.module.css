@@ -1,0 +1,49 @@
+.container {
+  width: 885px;
+  height: 234px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: rgba(255, 200, 73, 0.8);
+  justify-content: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 30px;
+}
+.container h1 {
+  color: #5775CD;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.container p {
+  color: #5775CD;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.container .remoteWork {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: #FFF;
+  padding: 10px 5px;
+}
+.container button {
+  color: #FFF;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 20px;
+  background: #A998FA;
+  border: none;
+}
+
+/*# sourceMappingURL=CardVacancy.module.css.map */
