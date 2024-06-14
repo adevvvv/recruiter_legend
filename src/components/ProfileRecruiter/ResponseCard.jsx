@@ -1,4 +1,4 @@
-import styles from './ProfileApplicant.module.scss';
+import styles from './ProfileRecruiter.module.scss';
 import profile from '../../assets/image/profile.svg';
 import chep from '../../assets/image/chep.png';
 import vk from '../../assets/image/vk.png';
@@ -8,30 +8,76 @@ import telegram from '../../assets/image/telegram.png';
 import { ButtonWithChain } from '../Common/buttons';
 
 const ResponseCard = () => {
-//   const [data, setFormData] = useState({
-//     name: 'Имя пользователя',
-//     bird: 'Дата рождения',
-//     city: 'Город',
-//     phone: '+79999999999',
-//     email: 'email',
-//   });
+  //   const [data, setFormData] = useState({
+  //     name: 'Имя пользователя',
+  //     bird: 'Дата рождения',
+  //     city: 'Город',
+  //     phone: '+79999999999',
+  //     email: 'email',
+  //   });
 
-const data = [
-    { firstName: 'Наталья', desiredPosition: 'UX/UI дизайнер',  birthDate: '25-02-2000', city: 'Москва', phoneNumber: '+79999998899', email: 'аdsfd@mail.ru', img: '../assets/image/profile.svg' },
-    { firstName: 'Андрей', desiredPosition: 'frontend',  birthDate: '25-05-2000', city: 'Казань', phoneNumber: '+79977998899', email: 'аdvsfd@mail.ru', img: '../assets/image/profile2.svg' },
-    { firstName: 'Ольга', desiredPosition: 'DevOps',  birthDate: '05-02-1983', city: 'Санкт-Петербург', phoneNumber: '+79999998899', email: 'аdssss@mail.ru', img: '../assets/image/profile3.svg' },
-    { firstName: 'Игорь', desiredPosition: 'Project manager',  birthDate: '27-02-2001', city: 'Москва', phoneNumber: '+79669998899', email: 'аdsfd@mail.ru', img: '../assets/image/profile.svg' },
-    { firstName: 'Артем', desiredPosition: 'Backend',  birthDate: '25-09-2000', city: 'Москва', phoneNumber: '+79999668899', email: 'kkdsfd@mail.ru', img: '../assets/image/profile2.svg' },
-    { firstName: 'Дмитрий', desiredPosition: 'Fullstack',  birthDate: '25-05-2000', city: 'Москва', phoneNumber: '+79999900899', email: 'nnnfd@mail.ru', img: '../assets/image/profile3.svg' },
+  const data = [
+    {
+      firstName: 'Наталья',
+      desiredPosition: 'UX/UI дизайнер',
+      birthDate: '25-02-2000',
+      city: 'Москва',
+      phoneNumber: '+79999998899',
+      email: 'аdsfd@mail.ru',
+      img: {profile},
+    },
+    {
+      firstName: 'Андрей',
+      desiredPosition: 'frontend',
+      birthDate: '25-05-2000',
+      city: 'Казань',
+      phoneNumber: '+79977998899',
+      email: 'аdvsfd@mail.ru',
+      img: '../assets/image/profile2.svg',
+    },
+    {
+      firstName: 'Ольга',
+      desiredPosition: 'DevOps',
+      birthDate: '05-02-1983',
+      city: 'Санкт-Петербург',
+      phoneNumber: '+79999998899',
+      email: 'аdssss@mail.ru',
+      img: '../assets/image/profile3.svg',
+    },
+    {
+      firstName: 'Игорь',
+      desiredPosition: 'Project manager',
+      birthDate: '27-02-2001',
+      city: 'Москва',
+      phoneNumber: '+79669998899',
+      email: 'аdsfd@mail.ru',
+      img: '../assets/image/profile.svg',
+    },
+    {
+      firstName: 'Артем',
+      desiredPosition: 'Backend',
+      birthDate: '25-09-2000',
+      city: 'Москва',
+      phoneNumber: '+79999668899',
+      email: 'kkdsfd@mail.ru',
+      img: '../assets/image/profile2.svg',
+    },
+    {
+      firstName: 'Дмитрий',
+      desiredPosition: 'Fullstack',
+      birthDate: '25-05-2000',
+      city: 'Москва',
+      phoneNumber: '+79999900899',
+      email: 'nnnfd@mail.ru',
+      img: '../assets/image/profile3.svg',
+    },
   ];
-//   const onHandleChange = (e) => {
-//     const { name, value } = e.target;
-//     // setFormData((data) => ({ ...data, [name]: value }));
-//   };
+  //   const onHandleChange = (e) => {
+  //     const { name, value } = e.target;
+  //     // setFormData((data) => ({ ...data, [name]: value }));
+  //   };
 
-  const onClickResume = () => {
-
-  };
+  const onClickResume = () => {};
 
   return (
     <div
@@ -43,39 +89,25 @@ const data = [
         justifySelf: 'center',
       }}
     >
-      <div className={styles['container']}>
+      <div className={styles['containerCard']}>
         <div>
           <img src={data.img} alt="profile" />
         </div>
         <div className={styles['blockForm']}>
-        
-        <div className={styles['card-info__text']}>
-            {data.firstName}
-        
-        </div>
+            <div style={{ display: 'flex', gap: '20px' }}>
+                <div className={styles['card-info__text']}>{data.firstName}</div>
+                <div className={styles['card-info__text']}>{data.desiredPosition}</div>
+            </div>
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <div className={styles['card-info__text']}>{data.birthDate}</div>
+
+            <div className={styles['card-info__text']}>{data.city}</div>
+          </div>
 
           <div style={{ display: 'flex', gap: '20px' }}>
-            <div className={styles['card-info__text']}>
-                {data.birthDate}
-              
-            </div>
+            <div className={styles['card-info__text']}>{data.phoneNumber}</div>
 
-          <div className={styles['card-info__text']}>
-           {data.city}
-           </div>
-
-        </div>
-
-          <div style={{ display: 'flex', gap: '20px' }}>
-            <div className={styles['card-info__text']}>
-                {data.phoneNumber}
-            
-            </div>
-
-            <div className={styles['card-info__text']}>
-            {data.email}
-             
-            </div>
+            <div className={styles['card-info__text']}>{data.email}</div>
           </div>
 
           <div className={styles['blockNetwork']}>

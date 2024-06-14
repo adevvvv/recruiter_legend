@@ -8,44 +8,44 @@ import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
 // import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
 
 const HomePage = () => {
+  // false - не авторизован, applicant, recruiter
+  const [isRole, setIsRole] = useState('applicant');
 
-    // false - не авторизован, applicant, recruiter
-    const [isRole, setIsRole] = useState('applicant');
-
-    return (
-
+  return (
     //   <div className={styles['container']}>
     //   <Header  />
-       
+
     //     {/* <div style={{ alignSelf: 'center' }}> */}
     //       <AppName />
     //       <img alt={'bottomImage'} src={bottomImage} />
     //     {/* </div> */}
-       
+
     // </div>
-        <div className={styles['container']}>
-            <Header isRole={isRole} setIsRole={setIsRole}/>
-            {
-                !isRole ?
-                    <div style={{display:'flex', flexDirection:'column', alignItems:'center',
-                    marginTop:'80px'}}>
-                        <AppName/>
-                        <img style={{marginTop:'60px'}} alt={'bottomImage'} src={bottomImage}/>
-                    </div>
-                    :
-                    isRole === 'applicant' ?
-                        <ProfileApplicant/>
-                        :
-                        <div>
-                            {/*    Профиль рекрутера*/}
-                        </div>
-            }
-
-
-
+    <div className={styles['container']}>
+      <Header isRole={isRole} setIsRole={setIsRole} />
+      {!isRole ? (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: '80px',
+          }}
+        >
+          <AppName />
+          <img
+            style={{ marginTop: '60px' }}
+            alt={'bottomImage'}
+            src={bottomImage}
+          />
         </div>
-
-    )
-}
+      ) : isRole === 'applicant' ? (
+        <ProfileApplicant />
+      ) : (
+        <div>{/*    Профиль рекрутера*/}</div>
+      )}
+    </div>
+  );
+};
 
 export default HomePage;

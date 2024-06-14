@@ -2,32 +2,31 @@
 // import LoginPopup from '../Popups/PopupLoginForm/PopupLoginForm';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from 'react';
 import notifications from '../../assets/image/notifications.svg';
 import profile from '../../assets/image/profile.svg';
-import SettingApplicant from "../SettingApplicant/SettingApplicant.jsx";
+import SettingApplicant from '../SettingApplicant/SettingApplicant.jsx';
 import { Context } from '../../main';
 import { observer } from 'mobx-react-lite';
 
+const Header = ({ isRole, setIsRole }) => {
+  // const [popupLoginFormActive, setPopupLoginFormActive] = useState(false);
 
-const Header = ({isRole, setIsRole}) => {
-    // const [popupLoginFormActive, setPopupLoginFormActive] = useState(false);
+  const [isSetting, setIsSetting] = useState(false);
+  const blockRef = useRef(null);
 
-    const [isSetting, setIsSetting] = useState(false);
-    const blockRef = useRef(null);
+  const handleClickOutside = (event) => {
+    if (blockRef.current && !blockRef.current.contains(event.target)) {
+      setIsSetting(false);
+    }
+  };
 
-    const handleClickOutside = (event) => {
-        if (blockRef.current && !blockRef.current.contains(event.target)) {
-            setIsSetting(false);
-        }
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+  }, []);
 
   return (
     <div className={styles['header']}>
@@ -41,34 +40,34 @@ const Header = ({isRole, setIsRole}) => {
         </div>
       </div>
 
-            {
-                isRole === 'applicant' ?
-                    <div className={styles['blockIcon']} >
-                        <img className={styles['notifications']} src={notifications} alt="notifications"/>
-                        <img onClick={()=>setIsSetting(true)} className={styles['profile']} src={profile} alt="profile"/>
+      {
+        isRole === 'applicant' ? (
+          <div className={styles['blockIcon']}>
+            <img
+              className={styles['notifications']}
+              src={notifications}
+              alt="notifications"
+            />
+            <img
+              onClick={() => setIsSetting(true)}
+              className={styles['profile']}
+              src={profile}
+              alt="profile"
+            />
 
-                        <div ref={blockRef} className={styles['menu']}>
-                            {
-                                isSetting ?
-                                    <SettingApplicant setIsRole={setIsRole}/>
-                                    :
-                                    null
-                            }
-                        </div>
-
-
-                    </div>
-
-                    :
-                    /* <a href="#" onClick={ () => setPopupLoginFormActive(true) }>вход</a> */
-                    <Link to="/auth/login">вход</Link>
-                /* <LoginPopup active={popupLoginFormActive} setActive={setPopupLoginFormActive} /> */
-            }
-
-
-        </div>
-    )
-}
+            <div ref={blockRef} className={styles['menu']}>
+              {isSetting ? <SettingApplicant setIsRole={setIsRole} /> : null}
+            </div>
+          </div>
+        ) : (
+          /* <a href="#" onClick={ () => setPopupLoginFormActive(true) }>вход</a> */
+          <Link to="/auth/login">вход</Link>
+        )
+        /* <LoginPopup active={popupLoginFormActive} setActive={setPopupLoginFormActive} /> */
+      }
+    </div>
+  );
+};
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default observer(Header); 
+export default observer(Header);

@@ -25,7 +25,6 @@ const CalendarBlock = () => {
   };
 
   return (
-    
     <div className={`${styles['container']} ${styles['containerRecruiter']}`}>
       <div className={styles['scroll']}>
         {dateRender.map((date, i) => (
@@ -58,9 +57,7 @@ const CalendarBlock = () => {
           </div>
         ))}
       </div>
-
     </div>
-   
   );
 };
 

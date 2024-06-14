@@ -60,7 +60,8 @@ export default class Store {
       console.log(
         error.response?.data?.message ||
           error.response?.data?.detail ||
-          error.response?.detail || error,
+          error.response?.detail ||
+          error,
       );
       return error.response.status;
     }
@@ -87,12 +88,11 @@ export default class Store {
       console.log(this.userData);
       return true;
     } catch (error) {
-      this.errorRegistration =error
-        // JSON.parse(e.response?.request?.responseText).email[0] ||
-        // JSON.parse(e.response?.request?.responseText).password[0] ||
-        // JSON.parse(e.response?.request?.responseText).username[0]; 
+      this.errorRegistration = error;
+      // JSON.parse(e.response?.request?.responseText).email[0] ||
+      // JSON.parse(e.response?.request?.responseText).password[0] ||
+      // JSON.parse(e.response?.request?.responseText).username[0];
       console.log(this.errorRegistration);
- 
 
       // console.log(e.response?.data?.message|| e.response?.data?.detail||e.response?.request?.responseText|| e);
     }

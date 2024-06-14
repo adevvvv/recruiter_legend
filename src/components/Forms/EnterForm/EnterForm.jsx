@@ -53,8 +53,6 @@ const EnterForm = () => {
       navigate('/');
       return;
     }
-
-
   };
 
   return (
@@ -63,8 +61,7 @@ const EnterForm = () => {
       <Header />
       <div className={styles['login__container']}>
         <form className="enter-form" onSubmit={handleSubmit(onSubmit)}>
-
-        <input
+          <input
             {...register('username', {
               required: true,
               minLength: 2,
@@ -138,7 +135,7 @@ const EnterForm = () => {
             <p className={styles['enter-error']}>{errors.password.message}</p>
           )}
 
-          <button  type="submit">Вход</button>
+          <button type="submit">Вход</button>
           <button onClick={handleRegister}>Регистрация</button>
           <a href="#">Забыли пароль?</a>
         </form>

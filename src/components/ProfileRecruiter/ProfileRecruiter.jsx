@@ -1,5 +1,3 @@
-
-
 import CalendarRecruiter from '../Calendar/CalendarRecruiter.jsx';
 import Header from '../Header/Header.jsx';
 import styles from './ProfileRecruiter.module.scss';
@@ -14,25 +12,21 @@ const ProfileRecruiter = () => {
 
   return (
     <div className={styles['container']}>
-      <Header  />
-       
-        <div style={{ alignSelf: 'center', width: '1148px' }}>
-           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <RecruiterInfo />
-                    <div style={{ width: '57%' }}>
-                        <CalendarRecruiter  />
-                    </div>
-                
-            </div> 
-        </div>
+      <Header />
 
-        <div className={styles['cards']}>
-gfdgfdg
+      <div style={{ alignSelf: 'center', width: '1148px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <RecruiterInfo />
+          <div style={{ width: '57%' }}>
+            <CalendarRecruiter />
+          </div>
         </div>
-       
+      </div>
+
+      <div className={styles['cards']}>gfdgfdg</div>
     </div>
   );
-  
+
   // return (
   //   <div className={styles['container']}>
   //     <Header isRole={isRole} />
@@ -51,5 +45,3 @@ gfdgfdg
 };
 
 export default ProfileRecruiter;
-
-
