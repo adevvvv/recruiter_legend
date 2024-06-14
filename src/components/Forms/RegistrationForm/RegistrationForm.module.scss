@@ -1,0 +1,94 @@
+@import '../../../styles/mixins.scss';
+
+.container {
+    @include container;
+}
+
+.overlay {
+    @include overlay;
+}
+
+.register-container {
+    width: 44%;
+    height: fit-content;
+    padding: 20px;
+    // background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 200, 73, 1);
+    margin: auto;
+    z-index: 2;
+    &__title {
+        // font-size: 26px;
+        font-weight: 700;
+        line-height: 35.52px;
+        color: rgba(87, 117, 205, 1);
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+    &__label {
+        display: flex;
+        justify-content: center;
+        align-items: center ;
+        margin-bottom: 2rem;
+        width: 72%;
+        
+        &-text {
+            color: rgba(87, 117, 205, 1); 
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 17.76px;
+            text-align: left;
+        } 
+    }
+    &__checkbox {
+        margin-right: 1.5rem;
+        cursor: pointer;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+  
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center        
+}
+
+.form-input {
+    @include input;
+    width: 72%;
+    height: 42px;
+    gap: 0px;
+    opacity: 0px;
+    margin:auto;
+    // border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    // font-weight: 700;
+    line-height: 21.86px;
+    text-align: left;
+    padding-left: 10px;
+    color: rgba(87, 117, 205, 1);
+    margin-bottom: 20px
+}
+
+.input-error {
+    @include input-error;
+}
+
+button {
+    @include button;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.enter-error {
+    @include enter-form-error;
+}

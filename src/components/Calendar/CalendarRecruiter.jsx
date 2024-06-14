@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Calendar.module.scss';
 import { addDays, format, getDay } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
-const Calendar = () => {
+const CalendarBlock = () => {
   const currentDate = new Date();
 
   const weekdays = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
@@ -25,12 +25,11 @@ const Calendar = () => {
   };
 
   return (
-    <div className={styles['container']}>
-      <h2>Выберите дату и время</h2>
+    <div className={`${styles['container']} ${styles['containerRecruiter']}`}>
       <div className={styles['scroll']}>
         {dateRender.map((date, i) => (
           <div
-            className={`${styles['windowDate']} ${selectedDate === i ? styles['selectedDate'] : null}`}
+            className={`${styles['dateRecruiter']} ${selectedDate === i ? styles['selectedDate'] : null}`}
             key={i}
             onClick={() => onSelectDate(i)}
           >
@@ -49,18 +48,17 @@ const Calendar = () => {
           '16:30 - 16:45',
         ].map((time, i) => (
           <div
-            className={`${styles['time']} ${selectedTime === i ? styles['selectedTime'] : null}`}
+            className={`${styles['timeRecruiter']} ${selectedTime === i ? styles['selectedTime'] : null}`}
             key={i}
             onClick={() => onSelectedTime(i)}
           >
             {time}
+            <p>Username</p>
           </div>
         ))}
       </div>
-
-      <button>Записаться</button>
     </div>
   );
 };
 
-export default Calendar;
+export default CalendarBlock;
