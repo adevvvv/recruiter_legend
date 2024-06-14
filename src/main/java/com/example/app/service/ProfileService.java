@@ -14,6 +14,9 @@ public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
+    public Profile updateProfile(Profile profile) {
+        return profileRepository.save(profile);
+    }
     public List<Profile> getAllProfiles() {
         return profileRepository.findAll();
     }

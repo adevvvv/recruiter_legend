@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +30,18 @@ public class UserService {
                 .role(userDTO.getRole())
                 .build();
         return repository.save(user);
+    }
+    public User updateUser(Long id, UserDTO userDTO) {
+        return repository.findById(id)
+                .map(user -> {
+                    user.setUsername(userDTO.getUsername());
+                    user.setPassword(userDTO.getPassword());
+                    user.setEmail(userDTO.getEmail());
+                    user.setRole(userDTO.getRole());
+                    user.setPosition(userDTO.getPosition());
+                    return repository.save(user);
+                })
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     @Transactional
@@ -82,6 +95,10 @@ public class UserService {
         return repository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
 
+    }
+
+    public Optional<User> getUserById(Long id) {
+        return repository.findById(id);
     }
 
     /**

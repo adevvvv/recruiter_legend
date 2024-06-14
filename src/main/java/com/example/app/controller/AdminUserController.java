@@ -1,11 +1,17 @@
 package com.example.app.controller;
 
+import com.example.app.domain.dto.JwtAuthenticationResponse;
+import com.example.app.domain.dto.SignUpRequest;
 import com.example.app.domain.dto.UserDTO;
 import com.example.app.domain.model.User;
+import com.example.app.service.AdminService;
+import com.example.app.service.AuthenticationService;
 import com.example.app.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +19,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/admin/users")
 @Tag(name = "Панель администратора")
 public class AdminUserController {
 
     private final UserService userService;
+    private final AdminService adminService;
 
-    public AdminUserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @Operation(summary = "Получить всех пользователей")
     @GetMapping
@@ -43,12 +48,15 @@ public class AdminUserController {
         }
     }
 
-    @Operation(summary = "Создать пользователя")
-    @PostMapping
-    public ResponseEntity<User> createUser(
-            @RequestBody UserDTO userDTO) {
-        User user = userService.createUser(userDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    @Operation(summary = "Создать рекрутера")
+    @PostMapping("/create-recruiter")
+    public JwtAuthenticationResponse createRecruiter(@RequestBody @Valid SignUpRequest request) {
+        return adminService.createRecruiter(request);
+    }
+    @Operation(summary = "Создать админа")
+    @PostMapping("/create-admin")
+    public JwtAuthenticationResponse createAdmin(@RequestBody @Valid SignUpRequest request) {
+        return adminService.createAdmin(request);
     }
 
     @Operation(summary = "Удалить пользователя по идентификатору")

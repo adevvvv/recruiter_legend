@@ -24,5 +24,6 @@ public class TimeSlot {
     private LocalDateTime endTime;
 
     private boolean isAvailable;
+    private String bookedBy;
 
 }

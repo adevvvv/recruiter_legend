@@ -1,15 +1,14 @@
 package com.example.app.domain.dto;
 
-import com.example.app.domain.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDTO {
+public class RecruiterProfileDTO {
+
+    private Long id;
     private String username;
-    private String password;
-    private String email;
-    private Role role;
     private String position;
+    private byte[] photo;
 }

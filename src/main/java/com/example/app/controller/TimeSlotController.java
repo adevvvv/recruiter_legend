@@ -2,43 +2,47 @@ package com.example.app.controller;
 
 import com.example.app.domain.model.TimeSlot;
 import com.example.app.service.TimeSlotService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
 @RequestMapping("/timeslots")
-@Tag(name = "Календарь для соискателя")
 public class TimeSlotController {
 
     @Autowired
     private TimeSlotService timeSlotService;
 
-    @Operation(summary = "Получить все временные слоты")
     @GetMapping
     public List<TimeSlot> getAllTimeSlots() {
         return timeSlotService.getAllTimeSlots();
     }
 
-    @Operation(summary = "Получить доступные временные слоты")
     @GetMapping("/available")
     public List<TimeSlot> getAvailableTimeSlots() {
         return timeSlotService.getAvailableTimeSlots();
     }
 
-    @Operation(summary = "Забронировать временной слот")
-    @PostMapping("/{id}")
-    public TimeSlot bookTimeSlot(
-            @Parameter(description = "ID временного слота для бронирования", required = true) @PathVariable Long id) {
-        return timeSlotService.bookTimeSlot(id);
+    @PostMapping("/book/{id}")
+    public ResponseEntity<TimeSlot> bookTimeSlot(@PathVariable Long id, @RequestParam String username) {
+        TimeSlot bookedSlot = timeSlotService.bookTimeSlot(id, username);
+        return ResponseEntity.ok(bookedSlot);
     }
 
+    @PostMapping
+    public ResponseEntity<TimeSlot> createTimeSlot(@RequestParam LocalDateTime startTime,
+                                                   @RequestParam LocalDateTime endTime,
+                                                   @RequestParam boolean isAvailable) {
+        TimeSlot createdSlot = timeSlotService.createTimeSlot(startTime, endTime, isAvailable);
+        return ResponseEntity.ok(createdSlot);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTimeSlot(@PathVariable Long id) {
+        timeSlotService.deleteTimeSlot(id);
+        return ResponseEntity.noContent().build();
+    }
 }
