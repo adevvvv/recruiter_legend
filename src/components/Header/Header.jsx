@@ -35,7 +35,7 @@ const Header = ({isRole, setIsRole}) => {
                     <div style={{marginRight: '90px'}}>LOGO</div>
                     <Link to="/">главная</Link>
                     {/* <a href="#">главная</a> */}
-                    <a href="#">вакансии</a>
+                    <a href="/vacancy">вакансии</a>
                     <a href="#">новости</a>
                 </div>
             </div>

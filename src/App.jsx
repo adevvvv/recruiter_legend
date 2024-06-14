@@ -7,6 +7,7 @@ import Calendar from "./components/Calendar/Calendar.jsx";
 import ProfileApplicant from './components/ProfileApplicant/ProfileApplicant.jsx';
 import BaseInfo from './components/ProfileApplicant/BaseInfo.jsx';
 import Anketa from "./components/Anketa/Anketa.jsx";
+import Vacancy from "./components/Vacancy/Vacancy.jsx";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/applicant" element={<ProfileApplicant/>} />
                 <Route path="/applicantinfo" element={<BaseInfo/>} />
                 <Route path="/anketa" element={<Anketa/>} />
+                <Route path="/vacancy" element={<Vacancy/>} />
             </Routes>
         </>
     )
