@@ -81,3 +81,19 @@
     line-height: 20px;
     padding-bottom: 1rem;      
 }
+
+@mixin date {
+    white-space: normal;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+@mixin time {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    white-space: nowrap;
+    background-color: white;
+}
