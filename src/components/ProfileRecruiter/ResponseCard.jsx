@@ -13,7 +13,9 @@ const ResponseCard = ({user}) => {
   //     const { name, value } = e.target;
   //     // setFormuser((user) => ({ ...user, [name]: value }));
   //   };
-
+  const handleClick = () => {
+    
+  };
   const onClickResume = () => {};
 
   return (
@@ -76,20 +78,12 @@ const ResponseCard = ({user}) => {
             </div>
 
             <div className={styles['blockIcons']} >
-                <a
-                href="https://web.whatsapp.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                <img src={accept} alt="accept" />
-                </a>
-                <a
-                href="https://web.whatsapp.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                <img src={decline} alt="decline" />
-                </a>
+                <div onClick={handleClick} style={{  cursor: 'pointer' }}>
+                  <img src={accept} alt="accept" />
+                </div>
+                <div onClick={handleClick} style={{  cursor: 'pointer' }}>
+                  <img src={decline} alt="decline"  />
+                </div>
             </div>
         </div>
     </div>

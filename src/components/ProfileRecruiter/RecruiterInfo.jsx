@@ -20,7 +20,7 @@ const RecruiterInfo = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={chat} alt="Instagram Icon" className="instagram-icon" />
+            <img src={chat} alt="chat"  />
           </a>
         </div>
       </div>
