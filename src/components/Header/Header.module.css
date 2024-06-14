@@ -4,6 +4,7 @@
   margin: 30px 40px;
   align-items: center;
   background: #FFF;
+  padding-bottom: 20px;
   box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.25);
 }
 .header .blockNavigation {
@@ -24,6 +25,7 @@
   display: flex;
   gap: 32px;
   align-items: center;
+  position: relative;
 }
 .header .blockIcon .notifications {
   width: 60px;
@@ -32,6 +34,12 @@
 .header .blockIcon .profile {
   width: 70px;
   height: 70px;
+  cursor: pointer;
+}
+.header .blockIcon .menu {
+  position: absolute;
+  top: 81px;
+  right: 14px;
 }
 
 /*# sourceMappingURL=Header.module.css.map */

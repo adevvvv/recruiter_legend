@@ -1,10 +1,34 @@
 .container {
   border-radius: 20px;
-  background: rgba(87, 117, 205, 0.80);
+  background: #A08DFA;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  //width: 50%;
+  text-align: left;
+  padding: 39px 29px;
+
+  .btnSubmit {
+	color: #5775CD;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	border-radius: 20px;
+	background: #FFC849;
+
+  }
+
+  .rightColumn {
+
+	justify-items: right;
+  }
+
+  .block {
+	display: flex;
+	//gap: 150px;
+	justify-content: space-around;
+  }
 
   h3 {
 	color: #FFF;
@@ -15,12 +39,27 @@
   }
 
   .addPhoto {
+	width: 160px;
+	height: 160px;
 	border-radius: 20px;
 	background: #FFF;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 10px 20px;
+	text-align: center;
+	margin-bottom: 30px;
+
+	.profileImg {
+	  overflow: hidden;
+	  //object-fit: cover;
+	  width: 100%;
+	  height: 100%;
+	  border-radius: 50%;
+
+
+	}
 
 	p {
 	  color: #5775CD;
@@ -39,11 +78,21 @@
 	line-height: normal;
   }
 
-  input {
+  input, select {
 	border-radius: 20px;
 	background: #FFF;
 	border: none;
 	padding: 5px;
+	margin-bottom: 5px;
+	height: 31px;
+
+  }
+
+  .rightInput input {
+
+	display: flex;
+	flex-direction: column;
+	text-align: left;
   }
 
   button {
@@ -56,6 +105,7 @@
 	background: #FFF;
 	padding: 5px 40px;
 	border: none;
+	width: 179px;
   }
 
   .selectedGender {
@@ -69,8 +119,16 @@
 	align-items: center;
 	border-radius: 20px;
 	background: #FFF;
-	width: 50%;
+	width: 100%;
+	height: 63px;
   }
 
-
+  .inputSkills::placeholder {
+	color: #5775CD;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	white-space: normal;
+  }
 }
