@@ -1,10 +1,27 @@
 .container {
   border-radius: 20px;
-  background: rgba(87, 117, 205, 0.8);
+  background: #A08DFA;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  text-align: left;
+  padding: 39px 29px;
+}
+.container .btnSubmit {
+  color: #5775CD;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 20px;
+  background: #FFC849;
+}
+.container .rightColumn {
+  justify-items: right;
+}
+.container .block {
+  display: flex;
+  justify-content: space-around;
 }
 .container h3 {
   color: #FFF;
@@ -14,12 +31,23 @@
   line-height: normal;
 }
 .container .addPhoto {
+  width: 160px;
+  height: 160px;
   border-radius: 20px;
   background: #FFF;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.container .addPhoto .profileImg {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 .container .addPhoto p {
   color: #5775CD;
@@ -35,11 +63,18 @@
   font-weight: 700;
   line-height: normal;
 }
-.container input {
+.container input, .container select {
   border-radius: 20px;
   background: #FFF;
   border: none;
   padding: 5px;
+  margin-bottom: 5px;
+  height: 31px;
+}
+.container .rightInput input {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 .container button {
   color: #5775CD;
@@ -51,6 +86,7 @@
   background: #FFF;
   padding: 5px 40px;
   border: none;
+  width: 179px;
 }
 .container .selectedGender {
   color: #FFF;
@@ -62,7 +98,16 @@
   align-items: center;
   border-radius: 20px;
   background: #FFF;
-  width: 50%;
+  width: 100%;
+  height: 63px;
+}
+.container .inputSkills::placeholder {
+  color: #5775CD;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  white-space: normal;
 }
 
 /*# sourceMappingURL=Anketa.module.css.map */

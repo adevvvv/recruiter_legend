@@ -1,0 +1,46 @@
+{
+  "lastName": "string",
+  "firstName": "string",
+  "middleName": "string",
+  "birthDate": "2024-06-13",
+  "gender": "string",
+  "phoneNumber": "string",
+  "email": "string",
+  "citizenship": "string",
+  "city": "string",
+  "educationList": [
+    {
+      "id": 0,
+      "institution": "string",
+      "degree": "string"
+    }
+  ],
+  "desiredPosition": "string",
+  "desiredSalary": "string",
+  "workSchedule": "string",
+  "employmentType": "string",
+
+  "languages": [
+    {
+      "id": 0,
+      "language": "string",
+      "proficiencyLevel": "string"
+    }
+  ],
+
+  "workExperienceList": [
+    {
+      "id": 0,
+      "startDate": "2024-06-13",
+      "endDate": "2024-06-13",
+      "currentlyWorking": true,
+      "position": "string",
+      "responsibilities": "string"
+    }
+  ],
+  "message": "string",
+  "resumeAttachment": "string",
+  "consentToProcessPersonalData": true
+}
+
+

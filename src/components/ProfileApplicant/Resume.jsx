@@ -1,6 +1,7 @@
 import styles from './ProfileApplicant.module.scss';
-import { ButtonWithChain } from '../Common/buttons.jsx';
-import { useRef, useState } from 'react';
+import {ButtonWithChain} from "../Common/buttons.jsx";
+import {useRef, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const Resume = () => {
   const fileInputRef = useRef(null);
@@ -10,20 +11,26 @@ const Resume = () => {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setFileName(file.name);
-      // Здесь можно добавить логику для обработки файла
-    }
-  };
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setFileName(file.name);
+            // Здесь можно добавить логику для обработки файла
+        }
+    };
 
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <div className={styles['containerResume']}>
-        <h1>У вас еще нет резюме</h1>
-        <div>
-          <button style={{ marginBottom: '20px' }}>Добавить</button>
+    const navigate = useNavigate();
+
+    const goToAnketa = () => {
+        navigate('/anketa');
+    }
+
+    return (
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div className={styles['containerResume']}>
+                <h1>У вас еще нет резюме</h1>
+                <div>
+                    <button onClick={goToAnketa} style={{marginBottom: '20px'}}>Добавить</button>
 
           <div onClick={handleButtonClick}>
             <ButtonWithChain

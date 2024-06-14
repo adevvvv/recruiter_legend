@@ -9,6 +9,7 @@ import BaseInfo from './components/ProfileApplicant/BaseInfo.jsx';
 import Anketa from "./components/Anketa/Anketa.jsx";
 import Resume from './components/ProfileApplicant/Resume.jsx';
 import RegistrationForm from './components/Forms/RegistrationForm/RegistrationForm.jsx';
+import ProfileRecruiter from './components/ProfileRecruiter/ProfileRecruiter.jsx';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/register" element={<RegistrationForm/>} />
                 <Route path="/resume" element={<Resume/>} />
                 <Route path="/anketa" element={<Anketa/>} />
+                <Route path="/recruiter" element={<ProfileRecruiter/>} />
             </Routes>
         </>
     )
