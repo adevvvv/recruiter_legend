@@ -1,6 +1,6 @@
 import styles from './Anketa.module.scss';
 import Plus from "../Common/Plus.jsx";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import BlockInput from "./Input/BlockInput.jsx";
 import Header from "../Header/Header.jsx";
 import BlockSelect from "./select/BlockSelect.jsx";
@@ -40,7 +40,7 @@ const Anketa = () => {
     });
 
     const handleChange = (e) => {
-        const { name, type, checked, value } = e.target;
+        const {name, type, checked, value} = e.target;
         // console.log('name', name);
         // console.log('val', value);
         // console.log('type', type);
@@ -356,6 +356,46 @@ const Anketa = () => {
         ));
     }
 
+    // const fileRef = useRef(null);
+    // const [profileImage, setProfileImage] = useState(null);
+    // const handleImageChange = (event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         setProfileImage(file.name);
+    //         // Здесь можно добавить логику для обработки файла
+    //     }
+    //     console.log('h');
+        // const file = event.target.files[0];
+        // const reader = new FileReader();
+        //
+        // reader.onloadend = () => {
+        //     setProfileImage(reader.result);
+        // };
+        //
+        // if (file) {
+        //     reader.readAsDataURL(file);
+        // }
+    // };
+
+    const [profileImage, setProfileImage] = useState(null);
+    const fileRef = useRef(null);
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setProfileImage(reader.result);
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleClick = () => {
+        fileRef.current.click();
+    };
 
     return (
         <div>
@@ -373,16 +413,25 @@ const Anketa = () => {
 
                             <div className={styles['leftColumn']}>
                                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                                    <div className={styles['addPhoto']}>
+                                    <div onClick={handleClick} className={styles['addPhoto']}>
 
-                                        <p>Добавить <br/> фото</p>
-                                        <input
-                                            type="file"
-                                            // ref={fileInputRef}
-                                            style={{display: 'none'}}
-                                            // onChange={handleFileChange}
-                                        />
-                                        <Plus/>
+                                        {
+                                            profileImage ?
+                                                <img className={styles['profileImg']} src={profileImage}/>
+                                                :
+                                                <div>
+                                                    <p>Добавить <br/> фото</p>
+                                                    <input
+                                                        type="file"
+                                                        ref={fileRef}
+                                                        style={{display: 'none'}}
+                                                        onChange={handleImageChange}
+                                                    />
+                                                    <Plus/>
+                                                </div>
+                                        }
+
+
                                     </div>
                                 </div>
 

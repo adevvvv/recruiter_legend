@@ -25,6 +25,7 @@
   display: flex;
   gap: 32px;
   align-items: center;
+  position: relative;
 }
 .header .blockIcon .notifications {
   width: 60px;
@@ -33,6 +34,12 @@
 .header .blockIcon .profile {
   width: 70px;
   height: 70px;
+  cursor: pointer;
+}
+.header .blockIcon .menu {
+  position: absolute;
+  top: 81px;
+  right: 14px;
 }
 
 /*# sourceMappingURL=Header.module.css.map */

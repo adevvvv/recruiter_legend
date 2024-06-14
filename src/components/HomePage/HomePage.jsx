@@ -13,12 +13,13 @@ const HomePage = () => {
 
     return (
         <div className={styles['container']}>
-            <Header isRole={isRole}/>
+            <Header isRole={isRole} setIsRole={setIsRole}/>
             {
                 !isRole ?
-                    <div style={{alignSelf: "center"}}>
+                    <div style={{display:'flex', flexDirection:'column', alignItems:'center',
+                    marginTop:'80px'}}>
                         <AppName/>
-                        <img alt={'bottomImage'} src={bottomImage}/>
+                        <img style={{marginTop:'60px'}} alt={'bottomImage'} src={bottomImage}/>
                     </div>
                     :
                     isRole === 'applicant' ?
