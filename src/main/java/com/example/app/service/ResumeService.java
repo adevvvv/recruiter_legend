@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class ResumeService {
+
     @Autowired
     private ResumeRepository resumeRepository;
 
@@ -21,17 +22,18 @@ public class ResumeService {
     }
 
     public Resume getResumeById(Long id) {
-        return resumeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resume not found"));
+        return resumeRepository.findById(id).orElseThrow(() -> new RuntimeException("Resume not found"));
     }
 
     public Resume updateResume(Long id, Resume resumeDetails) {
-        Resume resume = resumeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resume not found"));
-        // Update fields
+        Resume resume = resumeRepository.findById(id).orElseThrow(() -> new RuntimeException("Resume not found"));
+        resume.setFirstName(resumeDetails.getFirstName());
+        resume.setLastName(resumeDetails.getLastName());
+        // Update other fields as necessary
         return resumeRepository.save(resume);
     }
 
     public void deleteResume(Long id) {
-        Resume resume = resumeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resume not found"));
-        resumeRepository.delete(resume);
+        resumeRepository.deleteById(id);
     }
 }

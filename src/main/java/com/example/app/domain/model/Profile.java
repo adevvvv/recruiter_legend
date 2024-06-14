@@ -18,6 +18,7 @@ public class Profile {
     private String firstName;
     private String lastName;
     private String middleName;
+    private String position;
     private LocalDate birthDate;
     private String city;
     private String phoneNumber;
@@ -31,5 +32,5 @@ public class Profile {
 
     @Lob
     private byte[] resumeFile;
-
+    
 }

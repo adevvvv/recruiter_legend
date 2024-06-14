@@ -1,5 +1,6 @@
 package com.example.app.domain.model;
 
+import com.example.app.domain.model.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -43,6 +44,9 @@ public class User implements UserDetails {
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;
+
+    @Column(name = "position", nullable = true)
+    private String position;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)

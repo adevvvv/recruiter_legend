@@ -1,15 +1,19 @@
 package com.example.app.service;
 
+import com.example.app.domain.dto.UserDTO;
 import com.example.app.domain.model.TimeSlot;
+import com.example.app.domain.model.User;
 import com.example.app.repository.TimeSlotRepository;
+import com.example.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class TimeSlotService {
+public class RecruiterService {
 
     @Autowired
     private TimeSlotRepository timeSlotRepository;
@@ -43,4 +47,6 @@ public class TimeSlotService {
     public void deleteTimeSlot(Long id) {
         timeSlotRepository.deleteById(id);
     }
+
+
 }
