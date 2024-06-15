@@ -15,14 +15,23 @@
 .container .scroll .windowDate {
   white-space: normal;
   padding: 10px;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid black;
+  background-color: white;
+}
+.container .scroll .dateRecruiter {
+  white-space: normal;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: white;
+  border: none;
 }
 .container .scroll .selectedDate {
-  background-color: greenyellow;
+  background-color: rgb(255, 200, 73);
 }
 .container .blockTime {
-  margin-top: 30px;
+  margin-top: 1rem;
   display: flex;
   gap: 30px;
 }
@@ -31,15 +40,33 @@
   border-radius: 10px;
   border: 1px solid black;
   white-space: nowrap;
+  background-color: white;
+}
+.container .blockTime .timeRecruiter {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  white-space: nowrap;
+  background-color: white;
+  border: none;
+  width: 21%;
 }
 .container .blockTime .selectedTime {
-  background-color: greenyellow;
+  background-color: rgb(255, 200, 73);
 }
 .container button {
   margin-top: 50px;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid black;
+}
+
+.containerRecruiter {
+  background-color: rgba(118, 92, 248, 0.8);
+  border-radius: 20px;
+  margin: auto;
+  height: 222px;
+  padding: 15px;
 }
 
 /*# sourceMappingURL=Calendar.module.css.map */

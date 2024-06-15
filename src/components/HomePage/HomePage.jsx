@@ -4,6 +4,7 @@ import bottomImage from '../../assets/image/bottomImage.png';
 import styles from './HomePage.module.scss';
 import { useState } from 'react';
 import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
+import ProfileRecruiter from "../ProfileRecruiter/ProfileRecruiter.jsx";
 
 // import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
 
@@ -42,7 +43,9 @@ const HomePage = () => {
       ) : isRole === 'applicant' ? (
         <ProfileApplicant />
       ) : (
-        <div>{/*    Профиль рекрутера*/}</div>
+        <div>
+            <ProfileRecruiter/>
+            {/*    Профиль рекрутера*/}</div>
       )}
     </div>
   );

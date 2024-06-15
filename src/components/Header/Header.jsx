@@ -8,6 +8,7 @@ import profile from '../../assets/image/profile.svg';
 import SettingApplicant from '../SettingApplicant/SettingApplicant.jsx';
 import { Context } from '../../main';
 import { observer } from 'mobx-react-lite';
+import redHeart from '../../assets/image/redHeart.png';
 
 const Header = ({ isRole, setIsRole }) => {
   // const [popupLoginFormActive, setPopupLoginFormActive] = useState(false);
@@ -44,6 +45,10 @@ const Header = ({ isRole, setIsRole }) => {
       {
         isRole === 'applicant' ? (
           <div className={styles['blockIcon']}>
+              <img
+                  src={redHeart}
+                  alt="redHeart"
+              />
             <img
               className={styles['notifications']}
               src={notifications}

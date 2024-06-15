@@ -73,7 +73,6 @@ const ProfileRecruiter = () => {
 
   return (
     <div className={styles['container']}>
-      <Header />
 
       <div style={{ alignSelf: 'center', width: '1148px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
