@@ -1,8 +1,20 @@
 
 import styles from './CardVacancy.module.scss';
 import heart from '../../../assets/image/heart.png';
+import { useContext } from 'react';
+import { Context } from '../../../main';
 
 const CardVacancy = () => {
+
+    const { store } = useContext(Context);
+
+    const handleEdit = () => {
+        // Ваш код для редактирования вакансии
+      };
+    
+      const handleApply = () => {
+        // Ваш код для отклика на вакансию
+      };
 
     return (
         <div className={styles['container']}>
@@ -21,8 +33,10 @@ const CardVacancy = () => {
             </div>
 
             <div style={{display:'flex', alignItems: 'center', marginTop:'30px', gap:'30px'}}>
-                <button>Откликнуться</button>
-                <img src={heart} alt="like"/>
+                 {store.userData.role === 'ROLE_RECRUITER' && <button onClick={handleEdit}>Редактировать</button>}
+                 {store.userData.role=== 'ROLE_APPLICANT' && <><button onClick={handleApply}>Откликнуться</button>
+                 <img src={heart} alt="like"/></>}
+                {/* <img src={heart} alt="like"/> */}
             </div>
 
         </div>
