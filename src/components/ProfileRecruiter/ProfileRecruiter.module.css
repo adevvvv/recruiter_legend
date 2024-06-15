@@ -1,0 +1,100 @@
+.card {
+  background: rgba(84, 51, 246, 0.7);
+  width: 40%;
+  height: 222px;
+  gap: 0px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+  align-items: start;
+}
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 57%;
+  align-items: start;
+}
+.card-info__text {
+  width: 100%;
+  height: 42px;
+  border-radius: 20px;
+  background: rgb(255, 255, 255);
+  padding: 7px;
+  color: rgb(87, 117, 205);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 27.32px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: all;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(118, 92, 248, 0.8);
+  border-radius: 20px;
+  width: 1148px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+}
+
+.containerCard {
+  border-radius: 20px;
+  background: rgba(255, 200, 73, 0.8);
+  display: flex;
+  padding: 40px 20px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.containerCard .blockForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.containerCard .blockForm .inputName {
+  width: 520px;
+}
+.containerCard .blockForm .blockNetwork {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.responseCard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 48%;
+}
+
+button {
+  cursor: pointer;
+  background-color: #5775CD;
+  padding: 10px 35px;
+  border: none;
+  color: rgb(255, 255, 255);
+}
+
+.blockIcons {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+}
+
+/*# sourceMappingURL=ProfileRecruiter.module.css.map */

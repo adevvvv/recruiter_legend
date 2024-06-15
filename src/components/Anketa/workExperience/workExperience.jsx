@@ -20,7 +20,7 @@ const WorkExperience = ({ handleChange }) => {
             <label htmlFor="endDate">Уволился </label>
             <input onChange={handleChange} name={'endDate'} type="date" />
           </div>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap:'2px' }}>
             <input
               onChange={handleChange}
               name={'currentlyWorking'}

@@ -659,7 +659,7 @@ const Anketa = () => {
                 // style={{display: 'flex', flexDirection: 'column', textAlign: 'left'}}
                 >
                   {baseInfo.slice(11, 13).map((el, i) => (
-                    <BlockSelect
+                    <BlockInput
                       handleChange={handleChange}
                       title={el.title}
                       id={el.name}
