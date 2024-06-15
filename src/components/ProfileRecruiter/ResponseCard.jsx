@@ -13,9 +13,14 @@ const ResponseCard = ({user}) => {
   //     const { name, value } = e.target;
   //     // setFormuser((user) => ({ ...user, [name]: value }));
   //   };
-  const handleClick = () => {
-    
+  const handleAccept = () => {
+    //функция для принятия резюме
   };
+
+  const handleDecline = () => {
+    //функция для отклонения резюме
+  };
+
   const onClickResume = () => {};
 
   return (
@@ -78,10 +83,10 @@ const ResponseCard = ({user}) => {
             </div>
 
             <div className={styles['blockIcons']} >
-                <div onClick={handleClick} style={{  cursor: 'pointer' }}>
+                <div onClick={handleAccept} style={{  cursor: 'pointer' }}>
                   <img src={accept} alt="accept" />
                 </div>
-                <div onClick={handleClick} style={{  cursor: 'pointer' }}>
+                <div onClick={handleDecline} style={{  cursor: 'pointer' }}>
                   <img src={decline} alt="decline"  />
                 </div>
             </div>
