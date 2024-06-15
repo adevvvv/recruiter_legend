@@ -42,7 +42,9 @@ const HomePage = () => {
       ) : isRole === 'applicant' ? (
         <ProfileApplicant />
       ) : (
-        <div>{/*    Профиль рекрутера*/}</div>
+        <div>
+          {/* <ProfileRecruiter/> */}
+          </div>
       )}
     </div>
   );

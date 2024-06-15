@@ -2,16 +2,17 @@
 // import LoginPopup from '../Popups/PopupLoginForm/PopupLoginForm';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import notifications from '../../assets/image/notifications.svg';
 import profile from '../../assets/image/profile.svg';
 import SettingApplicant from '../SettingApplicant/SettingApplicant.jsx';
 import { Context } from '../../main';
 import { observer } from 'mobx-react-lite';
 
+
 const Header = ({ isRole, setIsRole }) => {
   // const [popupLoginFormActive, setPopupLoginFormActive] = useState(false);
-
+  const { store } = useContext(Context);
   const [isSetting, setIsSetting] = useState(false);
   const blockRef = useRef(null);
 
@@ -42,7 +43,7 @@ const Header = ({ isRole, setIsRole }) => {
             </div>
 
       {
-        isRole === 'applicant' ? (
+        (isRole  === 'applicant')||(store.userData.role === "ROLE_APPLICANT") ? (
           <div className={styles['blockIcon']}>
             <img
               className={styles['notifications']}

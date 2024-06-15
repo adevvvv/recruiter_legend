@@ -8,6 +8,7 @@ import WorkExperience from './workExperience/workExperience.jsx';
 
 const Anketa = () => {
   const [dataResume, setDataResume] = useState({
+    id: 0,
     lastName: '',
     firstName: '',
     middleName: '',
@@ -610,6 +611,7 @@ const Anketa = () => {
                       id={el.name}
                       width={el.width}
                       title={el.title}
+                      key={i}
                     />
                   ))}
 
@@ -620,6 +622,7 @@ const Anketa = () => {
                       id={el.name}
                       width={el.width}
                       date={el.date}
+                      key={i}
                     />
                   ))}
 
@@ -646,6 +649,7 @@ const Anketa = () => {
                       id={el.name}
                       width={el.width}
                       title={el.title}
+                      key={i}
                     />
                   ))}
                 </div>
@@ -662,6 +666,7 @@ const Anketa = () => {
                       date={el.date}
                       width={el.width}
                       marginTop={0}
+                      key={i}
                     />
                   ))}
                 </div>
@@ -683,6 +688,7 @@ const Anketa = () => {
                       id={el.name}
                       width={el.width}
                       title={el.title}
+                      key={i}
                     />
                   ))}
                 </div>
@@ -728,6 +734,7 @@ const Anketa = () => {
                       id={el.name}
                       width={el.width}
                       title={el.title}
+                      key={i}
                     />
                   ))}
 
@@ -739,6 +746,7 @@ const Anketa = () => {
                         id={el.name}
                         width={el.width}
                         title={el.title}
+                        key={i}
                       />
                     ))}
                   </div>
@@ -754,6 +762,7 @@ const Anketa = () => {
                       id={el.name}
                       width={el.width}
                       title={el.title}
+                      key={i}
                     />
                   ))}
                 </div>
@@ -769,6 +778,7 @@ const Anketa = () => {
                         id={el.name}
                         width={el.width}
                         date={el.date}
+                        key={i}
                       />
                     ))}
                   </div>
