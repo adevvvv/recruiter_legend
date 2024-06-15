@@ -8,7 +8,8 @@ import lombok.Setter;
 public class RecruiterProfileDTO {
 
     private Long id;
-    private String username;
+    private String firstName;
+    private String lastName;
     private String position;
     private byte[] photo;
 }

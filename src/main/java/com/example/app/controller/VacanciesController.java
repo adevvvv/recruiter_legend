@@ -1,45 +1,34 @@
 package com.example.app.controller;
 
-//import com.example.app.domain.model.TimeSlot;
-//import com.example.app.service.TimeSlotService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import com.google.gson.Gson;
+import com.example.app.service.VacanciesService;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/vacancies")
+@Tag(name = "Вакансии")
 public class VacanciesController {
 
-    // @Autowired
-    // private TimeSlotService timeSlotService;
+    private final VacanciesService vacanciesService;
 
+    @Autowired
+    public VacanciesController(VacanciesService vacanciesService) {
+        this.vacanciesService = vacanciesService;
+    }
+
+    @Operation(summary = "Получить все вакансии")
     @GetMapping
-    public String getAllVacancies() throws IOException {
-        String url = "https://rntgroup.com/career/vacancies";
-        Document doc = Jsoup.connect(url).get();
-        Elements vacancies = doc.select("div.col-12.tariff");
-        List<Map<String, String>> jsonObjects = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            String title = vacancies.get(i).selectFirst("span.tariff-title.block-el-title").text();
-            String type = vacancies.get(i).selectFirst("div.tariff-stickers").text();
-
-            Map<String, String> jsonObject = new HashMap<>();
-            jsonObject.put("title", title);
-            jsonObject.put("type", type);
-            jsonObjects.add(jsonObject);
-
-        }
-        Gson gson = new Gson();
-        return gson.toJson(jsonObjects);
+    public List<Map<String, String>> getAllVacancies() throws IOException {
+        return vacanciesService.getAllVacancies();
     }
 }

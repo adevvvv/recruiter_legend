@@ -41,7 +41,7 @@ public class ResumeController {
     }
 
     @Operation(summary = "Обновить резюме")
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Resume> updateResume(
             @Parameter(description = "ID резюме для обновления", required = true) @PathVariable Long id,
             @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Новые данные резюме", required = true,
