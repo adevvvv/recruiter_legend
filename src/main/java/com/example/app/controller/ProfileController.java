@@ -4,12 +4,13 @@ import com.example.app.domain.model.Profile;
 import com.example.app.service.ProfileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,7 +38,8 @@ public class ProfileController {
         Optional<Profile> profile = profileService.getProfileById(id);
         return profile.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-   /* @Operation(summary = "Создать новый профиль")
+
+    @Operation(summary = "Создать новый профиль")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")
     @PostMapping
     public ResponseEntity<String> createProfile(
@@ -45,14 +47,14 @@ public class ProfileController {
             @Parameter(description = "Фамилия", required = true) @RequestParam("lastName") String lastName,
             @Parameter(description = "Отчество", required = true) @RequestParam("middleName") String middleName,
             @Parameter(description = "Дата рождения в формате dd.MM.yyyy", required = true) @RequestParam("birthDate") String birthDate,
-            @Parameter(description = "Город", required = true) @RequestParam("city") String city,
-            @Parameter(description = "Номер телефона", required = true) @RequestParam("phoneNumber") String phoneNumber,
-            @Parameter(description = "Email", required = true) @RequestParam("email") String email,
-            @Parameter(description = "Ссылка на VK", required = true) @RequestParam("vkLink") String vkLink,
-            @Parameter(description = "Ссылка на Telegram", required = true) @RequestParam("telegramLink") String telegramLink,
-            @Parameter(description = "Ссылка на WhatsApp", required = true) @RequestParam("whatsappLink") String whatsappLink,
-            @Parameter(description = "Фотография профиля", required = true) @RequestParam("photo") MultipartFile photo,
-            @Parameter(description = "Файл резюме", required = true) @RequestParam("resumeFile") MultipartFile resumeFile) throws IOException {
+            @Parameter(description = "Город", required = false) @RequestParam(value = "city", required = false) String city,
+            @Parameter(description = "Номер телефона", required = false) @RequestParam(value = "phoneNumber", required = false) String phoneNumber,
+            @Parameter(description = "Email", required = false) @RequestParam(value = "email", required = false) String email,
+            @Parameter(description = "Ссылка на VK", required = false) @RequestParam(value = "vkLink", required = false) String vkLink,
+            @Parameter(description = "Ссылка на Telegram", required = false) @RequestParam(value = "telegramLink", required = false) String telegramLink,
+            @Parameter(description = "Ссылка на WhatsApp", required = false) @RequestParam(value = "whatsappLink", required = false) String whatsappLink,
+            @Parameter(description = "Фотография профиля", required = false) @RequestParam(value = "photo", required = false) MultipartFile photo,
+            @Parameter(description = "Файл резюме", required = false) @RequestParam(value = "resumeFile", required = false) MultipartFile resumeFile) throws IOException {
         Profile profile = new Profile();
         profile.setFirstName(firstName);
         profile.setLastName(lastName);
@@ -74,29 +76,29 @@ public class ProfileController {
         profile.setPhoto(photo.getBytes());
         profile.setResumeFile(resumeFile.getBytes());
 
+
         profileService.createOrUpdateProfile(profile);
         return ResponseEntity.ok("Профиль успешно создан");
-    }*/
-
-
+    }
 
     @Operation(summary = "Обновить существующий профиль")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Profile> updateProfile(
             @Parameter(description = "ID профиля для обновления объекта профиля", required = true) @PathVariable Long id,
-            @Parameter(description = "Имя", required = true) @RequestParam("firstName") String firstName,
-            @Parameter(description = "Фамилия", required = true) @RequestParam("lastName") String lastName,
-            @Parameter(description = "Отчество", required = true) @RequestParam("middleName") String middleName,
-            @Parameter(description = "Дата рождения в формате dd.MM.yyyy", required = true) @RequestParam("birthDate") String birthDate,
-            @Parameter(description = "Город", required = true) @RequestParam("city") String city,
-            @Parameter(description = "Номер телефона", required = true) @RequestParam("phoneNumber") String phoneNumber,
-            @Parameter(description = "Email", required = true) @RequestParam("email") String email,
-            @Parameter(description = "Ссылка на VK", required = true) @RequestParam("vkLink") String vkLink,
-            @Parameter(description = "Ссылка на Telegram", required = true) @RequestParam("telegramLink") String telegramLink,
-            @Parameter(description = "Ссылка на WhatsApp", required = true) @RequestParam("whatsappLink") String whatsappLink,
-            @Parameter(description = "Фотография профиля", required = true) @RequestParam("photo") MultipartFile photo,
-            @Parameter(description = "Файл резюме", required = true) @RequestParam("resumeFile") MultipartFile resumeFile) throws IOException {
+            @Parameter(description = "Имя") @RequestParam(name = "firstName", required = false) String firstName,
+            @Parameter(description = "Фамилия") @RequestParam(name = "lastName", required = false) String lastName,
+            @Parameter(description = "Отчество") @RequestParam(name = "middleName", required = false) String middleName,
+            @Parameter(description = "Дата рождения в формате dd.MM.yyyy") @RequestParam(name = "birthDate", required = false) String birthDate,
+            @Parameter(description = "Город") @RequestParam(name = "city", required = false) String city,
+            @Parameter(description = "Номер телефона") @RequestParam(name = "phoneNumber", required = false) String phoneNumber,
+            @Parameter(description = "Email") @RequestParam(name = "email", required = false) String email,
+            @Parameter(description = "Ссылка на VK") @RequestParam(name = "vkLink", required = false) String vkLink,
+            @Parameter(description = "Ссылка на Telegram") @RequestParam(name = "telegramLink", required = false) String telegramLink,
+            @Parameter(description = "Ссылка на WhatsApp") @RequestParam(name = "whatsappLink", required = false) String whatsappLink,
+            @Parameter(description = "Фотография профиля") @RequestParam(name = "photo", required = false) MultipartFile photo,
+            @Parameter(description = "Файл резюме") @RequestParam(name = "resumeFile", required = false) MultipartFile resumeFile) throws IOException {
+
         Optional<Profile> existingProfile = profileService.getProfileById(id);
 
         if (existingProfile.isPresent()) {

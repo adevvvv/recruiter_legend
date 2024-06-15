@@ -1,16 +1,19 @@
 package com.example.app.service;
 
 import com.example.app.domain.model.Profile;
+import com.example.app.domain.model.User;
 import com.example.app.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ProfileService {
-
+    @Autowired
+    private UserService userService;
     @Autowired
     private ProfileRepository profileRepository;
 
@@ -25,11 +28,17 @@ public class ProfileService {
         return profileRepository.findById(id);
     }
 
-    public Profile createOrUpdateProfile(Profile profile) {
-        return profileRepository.save(profile);
-    }
 
     public void deleteProfile(Long id) {
         profileRepository.deleteById(id);
+    }
+
+    @Transactional
+    public Profile createOrUpdateProfile(Profile profile) {
+        User currentUser = userService.getCurrentUser();
+
+        profile.setUser(currentUser);
+
+        return profileRepository.save(profile);
     }
 }

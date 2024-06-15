@@ -3,6 +3,7 @@ package com.example.app.domain.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,13 +17,24 @@ public class Resume {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Schema(description = "Фамилия", required = true)
     private String lastName;
+
+    @Schema(description = "Имя", required = true)
     private String firstName;
+
+    @Schema(description = "Отчество", required = true)
     private String middleName;
+
     private LocalDate birthDate;
     private String gender;
+
+    @Schema(description = "Номер телефона", required = true)
     private String phoneNumber;
+
+    @Schema(description = "Email", required = true)
     private String email;
+
     private String citizenship;
     private String city;
 
