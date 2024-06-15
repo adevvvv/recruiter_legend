@@ -3,6 +3,7 @@ import { makeAutoObservable } from 'mobx';
 import AuthService from '../utils/AuthService';
 import axios from 'axios';
 import { API_URL } from '../http';
+import Vacancies from "../utils/vacancies.js";
 
 // const history = createBrowserHistory();
 
@@ -104,5 +105,16 @@ export default class Store {
     this.setAuth(false);
     this.setUser({});
     this.setTokens({});
+  }
+
+
+  async getVacancies() {
+    try {
+      const response = await Vacancies.getVacancies();
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }

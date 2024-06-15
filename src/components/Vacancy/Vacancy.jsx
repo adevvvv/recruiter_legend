@@ -2,8 +2,64 @@ import Header from "../Header/Header.jsx";
 
 import styles from './Vacancy.module.scss';
 import CardVacancy from "./CardVacancy/CardVacancy.jsx";
+import {useContext, useEffect, useState} from "react";
+import {Context} from "../../main.jsx";
 
 const Vacancy = () => {
+
+    const {store} = useContext(Context);
+
+    const [vacancies, setVacancies] = useState([
+        {
+            "title": "Инженер по автоматизированному тестированию на Python",
+            "type": "Тестирование"
+        },
+        {
+            "title": ".NET-разработчик",
+            "type": "Разработка"
+        },
+        {
+            "title": "Бизнес-аналитик на проект для международного банка",
+            "type": "Аналитика"
+        },
+        {
+            "title": "Key Account Manager",
+            "type": "Менеджмент и развитие бизнеса"
+        },
+        {
+            "title": "Lead Python-разработчик",
+            "type": "Разработка"
+        },
+        {
+            "title": "Системный аналитик (транспорт и логистика)",
+            "type": "Аналитика"
+        },
+        {
+            "title": "Java/Kotlin-разработчик",
+            "type": "Разработка"
+        },
+        {
+            "title": "Frontend-разработчик (vue.js)",
+            "type": "Разработка"
+        },
+        {
+            "title": "Senior DevOps-инженер",
+            "type": "Разработка"
+        },
+        {
+            "title": "C/C++ разработчик",
+            "type": "Разработка"
+        }
+    ]);
+
+
+    useEffect(() => {
+        (async () => {
+            const response = await store.getVacancies();
+            setVacancies(response.data)
+        })();
+
+    }, []);
 
     const sort = [
         'По соответствию',
@@ -109,7 +165,7 @@ const Vacancy = () => {
                                             el.date.map((variant, i) => {
                                                 return (
                                                     <div style={{display:'flex', justifyContent:'left', gap:'5px'}}>
-                                                        <input name={el.title} type="radio"/>
+                                                        <input id={variant} name={el.title} type="radio"/>
                                                         <label htmlFor={variant}>{variant}</label>
                                                     </div>
 
@@ -123,8 +179,15 @@ const Vacancy = () => {
                         }
                     </div>
 
-                    <div>
-                    <CardVacancy/>
+                    <div style={{display:'flex', gap:'50px', flexDirection:'column'}}>
+                        {
+                            vacancies.map((el, i) => (
+                                <div key={i}>
+                                    <CardVacancy title={el.title} type={el.type}/>
+                                </div>
+                            ))
+                        }
+
                     </div>
 
                 </div>
