@@ -47,10 +47,11 @@
     gap: 20px;
     background: rgba(118, 92, 248, 0.8);
     border-radius: 20px;
-    width: 1148px;
+    width: 95%;
     margin: 20px auto;
     flex-wrap: wrap;
     padding: 1.5rem;
+    max-width: 1148px;
 }
 
 .containerCard {

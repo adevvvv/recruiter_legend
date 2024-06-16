@@ -69,10 +69,8 @@ const ProfileRecruiter = () => {
     },
   ];
 
-
   return (
     <div className={styles['container']}>
-
       <div style={{ alignSelf: 'center', width: '1148px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <RecruiterInfo />
@@ -84,8 +82,8 @@ const ProfileRecruiter = () => {
 
       <div className={styles['cards']}>
         {data.map((user, index) => (
-       <ResponseCard key={index} user={user} />
-    ))}
+          <ResponseCard key={index} user={user} />
+        ))}
       </div>
     </div>
   );

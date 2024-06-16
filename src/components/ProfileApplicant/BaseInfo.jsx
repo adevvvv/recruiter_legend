@@ -40,25 +40,23 @@ const BaseInfo = ({ setIsFormInfo }) => {
           <img src={profile} alt="profile" />
         </div>
         <div className={styles['blockForm']}>
-
           <div style={{ display: 'flex', gap: '20px' }}>
             <input
-                id={'name'}
-                name={'name'}
-                type="text"
-                value={formData.name}
-                onChange={onHandleChange}
+              id={'name'}
+              name={'name'}
+              type="text"
+              value={formData.name}
+              onChange={onHandleChange}
             />
 
             <input
-                id={'post'}
-                name={'post'}
-                type="text"
-                value={formData.post}
-                onChange={onHandleChange}
+              id={'post'}
+              name={'post'}
+              type="text"
+              value={formData.post}
+              onChange={onHandleChange}
             />
           </div>
-
 
           <div style={{ display: 'flex', gap: '20px' }}>
             <input
