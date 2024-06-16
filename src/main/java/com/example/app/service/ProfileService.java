@@ -12,14 +12,13 @@ import java.util.Optional;
 
 @Service
 public class ProfileService {
+
     @Autowired
     private UserService userService;
+
     @Autowired
     private ProfileRepository profileRepository;
 
-    public Profile updateProfile(Profile profile) {
-        return profileRepository.save(profile);
-    }
     public List<Profile> getAllProfiles() {
         return profileRepository.findAll();
     }
@@ -28,17 +27,20 @@ public class ProfileService {
         return profileRepository.findById(id);
     }
 
+    @Transactional
+    public Profile createOrUpdateProfile(Profile profile) {
+        User currentUser = userService.getCurrentUser();
+        profile.setUser(currentUser);
+        return profileRepository.save(profile);
+    }
 
+    @Transactional
     public void deleteProfile(Long id) {
         profileRepository.deleteById(id);
     }
 
     @Transactional
-    public Profile createOrUpdateProfile(Profile profile) {
-        User currentUser = userService.getCurrentUser();
-
-        profile.setUser(currentUser);
-
+    public Profile updateProfile(Profile profile) {
         return profileRepository.save(profile);
     }
 }

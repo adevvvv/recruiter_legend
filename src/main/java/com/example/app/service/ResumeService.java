@@ -2,6 +2,7 @@ package com.example.app.service;
 
 import com.example.app.domain.model.Resume;
 import com.example.app.repository.ResumeRepository;
+import com.example.app.utils.MessageException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +23,15 @@ public class ResumeService {
     }
 
     public Resume getResumeById(Long id) {
-        return resumeRepository.findById(id).orElseThrow(() -> new RuntimeException("Resume not found"));
+        return resumeRepository.findById(id)
+                .orElseThrow(() -> new MessageException("Резюме с id " + id + " не найдено"));
     }
 
     public Resume updateResume(Long id, Resume resumeDetails) {
-        Resume resume = resumeRepository.findById(id).orElseThrow(() -> new RuntimeException("Resume not found"));
+        Resume resume = resumeRepository.findById(id)
+                .orElseThrow(() -> new MessageException("Резюме с id " + id + " не найдено"));
         resume.setFirstName(resumeDetails.getFirstName());
         resume.setLastName(resumeDetails.getLastName());
-        // Update other fields as necessary
         return resumeRepository.save(resume);
     }
 

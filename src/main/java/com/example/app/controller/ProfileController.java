@@ -5,6 +5,7 @@ import com.example.app.service.ProfileService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -32,16 +34,26 @@ public class ProfileController {
 
     @Operation(summary = "Получить профиль по ID")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")
+    @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
-    public ResponseEntity<Profile> getProfileById(
-            @Parameter(description = "ID профиля, по которому будет извлекаться объект профиля", required = true) @PathVariable Long id) {
+    public ResponseEntity<Profile> getProfileById(@PathVariable Long id) {
         Optional<Profile> profile = profileService.getProfileById(id);
-        return profile.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return profile.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
+    @Operation(summary = "Получить все профили")
+    @PreAuthorize("hasRole('ROLE_APPLICANT')")
+    @SecurityRequirement(name = "bearerAuth")
+    @GetMapping
+    public ResponseEntity<List<Profile>> getAllProfiles() {
+        List<Profile> profiles = profileService.getAllProfiles();
+        return ResponseEntity.ok(profiles);
+    }
+
 
     @Operation(summary = "Создать новый профиль")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")
     @PostMapping
+    @SecurityRequirement(name = "bearerAuth")
     public ResponseEntity<String> createProfile(
             @Parameter(description = "Имя", required = true) @RequestParam("firstName") String firstName,
             @Parameter(description = "Фамилия", required = true) @RequestParam("lastName") String lastName,
@@ -73,13 +85,17 @@ public class ProfileController {
         profile.setVkLink(vkLink);
         profile.setTelegramLink(telegramLink);
         profile.setWhatsappLink(whatsappLink);
-        profile.setPhoto(photo.getBytes());
-        profile.setResumeFile(resumeFile.getBytes());
-
+        if (photo != null) {
+            profile.setPhoto(photo.getBytes());
+        }
+        if (resumeFile != null) {
+            profile.setResumeFile(resumeFile.getBytes());
+        }
 
         profileService.createOrUpdateProfile(profile);
         return ResponseEntity.ok("Профиль успешно создан");
     }
+
 
     @Operation(summary = "Обновить существующий профиль")
     @PreAuthorize("hasRole('ROLE_APPLICANT')")

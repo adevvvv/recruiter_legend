@@ -1,16 +1,13 @@
 package com.example.app.service;
 
-import com.example.app.domain.dto.UserDTO;
 import com.example.app.domain.model.TimeSlot;
-import com.example.app.domain.model.User;
 import com.example.app.repository.TimeSlotRepository;
-import com.example.app.repository.UserRepository;
+import com.example.app.utils.MessageException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RecruiterService {
@@ -27,10 +24,13 @@ public class RecruiterService {
     }
 
     public TimeSlot bookTimeSlot(Long id, String username) {
-        TimeSlot timeSlot = timeSlotRepository.findById(id).orElseThrow(() -> new RuntimeException("Time slot not found"));
+        TimeSlot timeSlot = timeSlotRepository.findById(id)
+                .orElseThrow(() -> new MessageException("Временной слот с id " + id + " не найден"));
+
         if (!timeSlot.isAvailable()) {
-            throw new RuntimeException("Time slot is already booked");
+            throw new MessageException("Временной слот с id " + id + " уже забронирован");
         }
+
         timeSlot.setAvailable(false);
         timeSlot.setBookedBy(username);
         return timeSlotRepository.save(timeSlot);
@@ -45,8 +45,10 @@ public class RecruiterService {
     }
 
     public void deleteTimeSlot(Long id) {
-        timeSlotRepository.deleteById(id);
+        try {
+            timeSlotRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new MessageException("Ошибка при удалении временного слота с id " + id);
+        }
     }
-
-
 }
