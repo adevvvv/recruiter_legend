@@ -4,7 +4,7 @@ import {useContext, useEffect, useState} from "react";
 import {Context} from "../../main.jsx";
 import {useQuery} from "react-query";
 
-const Vacancy = ({isRole}) => {
+const Vacancy = () => {
 
     const {store} = useContext(Context);
 
@@ -236,7 +236,7 @@ const Vacancy = ({isRole}) => {
 
 
                     {
-                        isRole === 'recruiter'
+                        store.userData.role === 'ROLE_RECRUITER'
                         ?
                             <div className={styles['addVacancies']}>
                                 Добавить вакансию
@@ -285,7 +285,7 @@ const Vacancy = ({isRole}) => {
                         {
                             vacancies.map((el, i) => (
                                 <div key={i}>
-                                    <CardVacancy isCross={isRole === 'recruiter'} title={el.title} type={el.type} tasks={el.tasks}/>
+                                    <CardVacancy title={el.title} type={el.type} tasks={el.tasks}/>
                                 </div>
                             ))
                         }

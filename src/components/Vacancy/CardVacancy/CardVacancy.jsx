@@ -5,7 +5,8 @@ import { Context } from '../../../main';
 import recsoft from '../../../assets/image/reksoft-1 1.svg';
 import cross from '../../../assets/image/cross.png';
 
-const CardVacancy = ({title, type, tasks, isCross}) => {
+// eslint-disable-next-line react/prop-types
+const CardVacancy = ({title, tasks}) => {
     const { store } = useContext(Context);
 
     const handleEdit = () => {
@@ -18,7 +19,7 @@ const CardVacancy = ({title, type, tasks, isCross}) => {
     return (
         <div className={styles['container']}>
             {
-                isCross ?
+                store.userData.role === 'ROLE_RECRUITER' ?
                     <img className={styles['cross']} src={cross} alt="cross"/>
                         :
                     null
@@ -35,6 +36,7 @@ const CardVacancy = ({title, type, tasks, isCross}) => {
                 <div className={styles['tasks']}>
                     {
                         tasks
+                            // eslint-disable-next-line react/prop-types
                             .slice(1, -1) // удаляем первую и последнюю скобку
                             .split(/, (?=[А-Я])/g) // разбиваем строку по запятым, за которыми следует заглавная буква
                             .map(task => task.trim()) // убираем лишние пробелы
