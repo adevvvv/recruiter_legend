@@ -10,9 +10,8 @@ import { observer } from 'mobx-react-lite';
 import redHeart from '../../assets/image/redHeart.png';
 import logo from '../../assets/image/logo.png';
 import { Context } from '../../main.jsx';
-import { Context } from '../../main.jsx';
 
-
+// eslint-disable-next-line react-refresh/only-export-components
 const Header = (
   // { isRole, setIsRole }
 ) => {
@@ -70,7 +69,9 @@ const Header = (
             />
 
             <div ref={blockRef} className={styles['menu']}>
-              {isSetting ? <SettingApplicant setIsRole={setIsRole} /> : null}
+              {isSetting ? <SettingApplicant 
+              // setIsRole={setIsRole}
+               /> : null}
             </div>
           </div>
         ) : (

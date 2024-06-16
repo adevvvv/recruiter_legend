@@ -1,47 +1,26 @@
-import AppName from './AppName.jsx';
-import bottomImage from '../../assets/image/bottomImage.png';
+// import AppName from './AppName.jsx';
+// import bottomImage from '../../assets/image/bottomImage.png';
 import styles from './HomePage.module.scss';
 import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
 import ProfileRecruiter from "../ProfileRecruiter/ProfileRecruiter.jsx";
+import { useContext } from 'react';
+import { Context } from '../../main.jsx';
 
 // import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
 
-const HomePage = ({isRole}) => {
-
+const HomePage = (
+  // {isRole}
+) => {
+  const { store } = useContext(Context);
 
   return (
-    //   <div className={styles['container']}>
-    //   <Header  />
-
-    //     {/* <div style={{ alignSelf: 'center' }}> */}
-    //       <AppName />
-    //       <img alt={'bottomImage'} src={bottomImage} />
-    //     {/* </div> */}
-
-    // </div>
     <div className={styles['container']}>
-      {!isRole ? (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            marginTop: '80px',
-          }}
-        >
-          <AppName />
-          <img
-            style={{ marginTop: '60px' }}
-            alt={'bottomImage'}
-            src={bottomImage}
-          />
-        </div>
-      ) : isRole === 'applicant' ? (
+      { store.userData.role === 'ROLE_APPLICANT' ? (
         <ProfileApplicant />
       ) : (
         <div>
             <ProfileRecruiter/>
-            {/*    Профиль рекрутера*/}</div>
+        </div>
       )}
     </div>
   );
