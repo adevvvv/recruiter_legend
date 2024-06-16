@@ -3,9 +3,9 @@ import heart from '../../../assets/image/heart.png';
 import { useContext } from 'react';
 import { Context } from '../../../main';
 import recsoft from '../../../assets/image/reksoft-1 1.svg';
+import cross from '../../../assets/image/cross.png';
 
-
-const CardVacancy = ({title, type, tasks}) => {
+const CardVacancy = ({title, type, tasks, isCross}) => {
     const { store } = useContext(Context);
 
     const handleEdit = () => {
@@ -17,6 +17,13 @@ const CardVacancy = ({title, type, tasks}) => {
       };
     return (
         <div className={styles['container']}>
+            {
+                isCross ?
+                    <img className={styles['cross']} src={cross} alt="cross"/>
+                        :
+                    null
+            }
+
             <h1>{title}</h1>
             <div style={{display: 'flex', marginTop: '15px', gap: '30px'}}>
                 <div className={styles['company']}>

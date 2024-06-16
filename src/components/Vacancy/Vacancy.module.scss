@@ -2,6 +2,17 @@
 .container {
   padding: 0 65px;
 
+  .addVacancies {
+	color: #FFF;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	border-radius: 20px;
+	background: rgba(169, 152, 250, 0.90);
+	padding: 3px 16px;
+  }
+
 
   .search {
 	position: relative;
