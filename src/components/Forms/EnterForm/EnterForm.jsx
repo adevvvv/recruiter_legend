@@ -5,7 +5,7 @@ import styles from './EnterForm.module.scss';
 import { useForm } from 'react-hook-form';
 import { Context } from '../../../main';
 import { observer } from 'mobx-react-lite';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const EnterForm = () => {
@@ -51,14 +51,13 @@ const EnterForm = () => {
 
     if (answer === 'anketa is not exist') {
       navigate('/');
-      return;
+      return null;
     }
   };
 
   return (
     // <div className={styles['overlay']}>
     <div className={styles['container']}>
-      <Header />
       <div className={styles['login__container']}>
         <form className="enter-form" onSubmit={handleSubmit(onSubmit)}>
           <input

@@ -1,16 +1,13 @@
-import Header from '../Header/Header.jsx';
 import AppName from './AppName.jsx';
 import bottomImage from '../../assets/image/bottomImage.png';
 import styles from './HomePage.module.scss';
-import { useState } from 'react';
 import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
 import ProfileRecruiter from "../ProfileRecruiter/ProfileRecruiter.jsx";
 
 // import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
 
-const HomePage = () => {
-  // false - не авторизован, applicant, recruiter
-  const [isRole, setIsRole] = useState('applicant');
+const HomePage = ({isRole}) => {
+
 
   return (
     //   <div className={styles['container']}>
@@ -23,7 +20,6 @@ const HomePage = () => {
 
     // </div>
     <div className={styles['container']}>
-      <Header isRole={isRole} setIsRole={setIsRole} />
       {!isRole ? (
         <div
           style={{

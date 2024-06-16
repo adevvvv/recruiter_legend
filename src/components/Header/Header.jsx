@@ -6,9 +6,9 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import notifications from '../../assets/image/notifications.svg';
 import profile from '../../assets/image/profile.svg';
 import SettingApplicant from '../SettingApplicant/SettingApplicant.jsx';
-import { Context } from '../../main';
 import { observer } from 'mobx-react-lite';
 import redHeart from '../../assets/image/redHeart.png';
+import logo from '../../assets/image/logo.png';
 
 
 const Header = ({ isRole, setIsRole }) => {
@@ -33,9 +33,12 @@ const Header = ({ isRole, setIsRole }) => {
     return (
         <div className={styles['header']}>
 
-            <div>
+            <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                <div style={{marginRight: '90px'}}>
+                    <img src={logo} alt="logo"/>
+                </div>
                 <div className={styles['blockNavigation']}>
-                    <div style={{marginRight: '90px'}}>LOGO</div>
+
                     <Link to="/">главная</Link>
                     {/* <a href="#">главная</a> */}
                     <Link to="/vacancy">вакансии</Link>

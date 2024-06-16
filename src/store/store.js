@@ -75,7 +75,7 @@ export default class Store {
 
   async registration({ username, email, password }) {
     try {
-      console.log(username, email), password;
+      console.log(username, email, password);
       const response = await axios.post(
         API_URL + '/sign-up',
         { username, email, password },
@@ -116,10 +116,10 @@ export default class Store {
   async getVacancies() {
     try {
       const response = await Vacancies.getVacancies();
-      return response;
+      return response.data;
     } catch (error) {
       console.log(error);
-      return error;
+      return null;
     }
   }
 
