@@ -17,23 +17,26 @@ import News from "./components/News/News.jsx";
 import {QueryClient, QueryClientProvider} from "react-query";
 import {useContext } from "react";
 import Main from './components/Main/Main.jsx';
-// import { Context } from './main.jsx';
+import  PrivateRoute  from './components/PrivateRoute/PrivateRoute.jsx';
+import { Context } from './main.jsx';
+import { toJS } from 'mobx';
 
 function App() {
 
   // false - не авторизован, applicant, recruiter
   const [isRole, setIsRole] = useState('applicant');
-  // const { store } = useContext(Context);
+  const { store } = useContext(Context);
   // console.log(store.userData.role);
 
   const query = new QueryClient();
-
+ console.log(toJS(store.userData))
   return (
     <>
       <QueryClientProvider client={query}>
         <Header isRole={isRole} setIsRole={setIsRole}/>
         <Routes>
-          <Route path="/profile" element={<HomePage isRole={isRole}/>} />
+          {/* <Route path="/profile" element={<HomePage isRole={isRole}/>} /> */}
+          <Route path="/profile" element={<PrivateRoute />} />
           <Route path="/" element={<Main />} />
           <Route path="/*" element={<Main />} />
           <Route path="/auth/login" element={<EnterForm />} />
