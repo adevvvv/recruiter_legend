@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react';
-import Header from '../../Header/Header';
+// import Header from '../../Header/Header';
 import bottomImage from '../../../assets/image/bottomImage.png';
 import styles from './EnterForm.module.scss';
 import { useForm } from 'react-hook-form';
 import { Context } from '../../../main';
 import { observer } from 'mobx-react-lite';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const EnterForm = () => {
@@ -43,32 +43,31 @@ const EnterForm = () => {
     console.log('userData', { username, password });
     const answer = await store.login(username, password);
     setAnswer(answer);
-
-    if (answer === 'anketa is exist') {
-      navigate('/anketa');
-      return;
+    console.log(store.userData.role);
+    if (store.userData.role) {
+      navigate('/profile');
     }
+    // if (answer === 'anketa is exist') {
+    //   navigate('/anketa');
+    //   return;
+    // }
 
-    if (answer === 'anketa is not exist') {
-      navigate('/');
-      return;
-    }
-
-
+    // if (answer === 'anketa is not exist') {
+    //   navigate('/');
+    //   return null;
+    // }
   };
 
   return (
     // <div className={styles['overlay']}>
     <div className={styles['container']}>
-      <Header />
       <div className={styles['login__container']}>
         <form className="enter-form" onSubmit={handleSubmit(onSubmit)}>
-
-        <input
+          <input
             {...register('username', {
               required: true,
-              minLength: 2,
-              maxLength: 30,
+              minLength: 5,
+              maxLength: 50,
               // pattern: /^[a-zA-Zа-яА-Я-]+(?:-[a-zA-Zа-яА-Я-]+)?$/,
             })}
             className={`${styles['form-input']} ${errors.username ? styles['input-error'] : ''}`}
@@ -78,12 +77,12 @@ const EnterForm = () => {
           />
           {errors.username?.type === 'minLength' && (
             <span className={styles['enter-error']}>
-              Имя должно содержать не менее 8 символов{' '}
+              Имя должно содержать не менее 5 символов{' '}
             </span>
           )}
           {errors.username?.type === 'maxLength' && (
             <span className={styles['enter-error']}>
-              Имя должно содержать не более 30 символов{' '}
+              Имя должно содержать не более 50 символов{' '}
             </span>
           )}
           {/* {errors.username?.type === 'pattern' && (
@@ -138,7 +137,7 @@ const EnterForm = () => {
             <p className={styles['enter-error']}>{errors.password.message}</p>
           )}
 
-          <button  type="submit">Вход</button>
+          <button type="submit">Вход</button>
           <button onClick={handleRegister}>Регистрация</button>
           <a href="#">Забыли пароль?</a>
         </form>

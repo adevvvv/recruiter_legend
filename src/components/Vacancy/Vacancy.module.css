@@ -1,0 +1,73 @@
+.container {
+  padding: 0 65px;
+}
+.container .addVacancies {
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 20px;
+  background: rgba(169, 152, 250, 0.9);
+  padding: 3px 16px;
+}
+.container .search {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 34px;
+  color: #FFFFFF;
+}
+.container .search button {
+  margin: 0;
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 20px;
+  background: rgba(160, 141, 250, 0.8);
+  border: none;
+}
+.container .search input {
+  border-radius: 20px;
+  background: rgba(160, 141, 250, 0.8);
+  width: 688px;
+  height: 33px;
+  flex-shrink: 0;
+  border: none;
+}
+.container .search svg {
+  position: absolute;
+  top: 2px;
+  left: 642px;
+}
+.container select {
+  text-align: center;
+  padding: 5px 10px;
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 20px;
+  background: #A08DFA;
+  border: none;
+}
+.container .filter {
+  border-radius: 20px;
+  background: rgba(160, 141, 250, 0.9);
+  color: #FFF;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 8px 17px;
+}
+.container .filter p {
+  font-size: 20px;
+}
+.container .filter label {
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=Vacancy.module.css.map */
