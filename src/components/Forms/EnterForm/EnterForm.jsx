@@ -43,16 +43,19 @@ const EnterForm = () => {
     console.log('userData', { username, password });
     const answer = await store.login(username, password);
     setAnswer(answer);
-
-    if (answer === 'anketa is exist') {
-      navigate('/anketa');
-      return;
+    console.log(store.userData.role);
+    if (store.userData.role) {
+      navigate("/profile")
     }
+    // if (answer === 'anketa is exist') {
+    //   navigate('/anketa');
+    //   return;
+    // }
 
-    if (answer === 'anketa is not exist') {
-      navigate('/');
-      return null;
-    }
+    // if (answer === 'anketa is not exist') {
+    //   navigate('/');
+    //   return null;
+    // }
   };
 
   return (
@@ -63,8 +66,8 @@ const EnterForm = () => {
           <input
             {...register('username', {
               required: true,
-              minLength: 2,
-              maxLength: 30,
+              minLength: 5,
+              maxLength: 50,
               // pattern: /^[a-zA-Zа-яА-Я-]+(?:-[a-zA-Zа-яА-Я-]+)?$/,
             })}
             className={`${styles['form-input']} ${errors.username ? styles['input-error'] : ''}`}
@@ -74,12 +77,12 @@ const EnterForm = () => {
           />
           {errors.username?.type === 'minLength' && (
             <span className={styles['enter-error']}>
-              Имя должно содержать не менее 8 символов{' '}
+              Имя должно содержать не менее 5 символов{' '}
             </span>
           )}
           {errors.username?.type === 'maxLength' && (
             <span className={styles['enter-error']}>
-              Имя должно содержать не более 30 символов{' '}
+              Имя должно содержать не более 50 символов{' '}
             </span>
           )}
           {/* {errors.username?.type === 'pattern' && (
