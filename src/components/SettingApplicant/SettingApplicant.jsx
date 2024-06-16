@@ -1,12 +1,20 @@
 import { useContext } from 'react';
 import styles from './SettingApplicant.module.scss';
 import { Context } from '../../main';
+import { useNavigate } from 'react-router-dom';
 
-const SettingApplicant = ({ setIsRole }) => {
-
+const SettingApplicant = (
+  // { setIsRole }
+) => {
+ 
   const { store } = useContext(Context);
-
+  const navigate = useNavigate();
+  
   const menu = [
+    {
+      title: 'Личный кабинет',
+      navigate: 'profile',
+    },
     {
       title: 'Чаты и отклики',
       navigate: '',
@@ -25,11 +33,14 @@ const SettingApplicant = ({ setIsRole }) => {
     },
   ];
 
-  const onNavigate = (navigate) => {
-    if (navigate === 'exit') {
-      setIsRole(false);
+  const onNavigate = (nav) => {
+    if (nav === 'exit') {
       store.logout();
-    }
+      navigate('/')
+    } 
+    if (nav === 'profile') {
+      navigate('/profile')
+    } 
   };
 
   return (
