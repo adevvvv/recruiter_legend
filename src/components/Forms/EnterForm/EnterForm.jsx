@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import Header from '../../Header/Header';
+// import Header from '../../Header/Header';
 import bottomImage from '../../../assets/image/bottomImage.png';
 import styles from './EnterForm.module.scss';
 import { useForm } from 'react-hook-form';

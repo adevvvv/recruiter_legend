@@ -15,11 +15,16 @@ import Header from "./components/Header/Header.jsx";
 import {useState} from "react";
 import News from "./components/News/News.jsx";
 import {QueryClient, QueryClientProvider} from "react-query";
+import {useContext } from "react";
+import Main from './components/Main/Main.jsx';
+// import { Context } from './main.jsx';
 
 function App() {
 
   // false - не авторизован, applicant, recruiter
   const [isRole, setIsRole] = useState('applicant');
+  // const { store } = useContext(Context);
+  // console.log(store.userData.role);
 
   const query = new QueryClient();
 
@@ -28,7 +33,9 @@ function App() {
       <QueryClientProvider client={query}>
         <Header isRole={isRole} setIsRole={setIsRole}/>
         <Routes>
-          <Route path="/" element={<HomePage isRole={isRole}/>} />
+          <Route path="/profile" element={<HomePage isRole={isRole}/>} />
+          <Route path="/" element={<Main />} />
+          <Route path="/*" element={<Main />} />
           <Route path="/auth/login" element={<EnterForm />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/applicant" element={<ProfileApplicant />} />

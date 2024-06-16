@@ -10,6 +10,7 @@ import { observer } from 'mobx-react-lite';
 import redHeart from '../../assets/image/redHeart.png';
 import logo from '../../assets/image/logo.png';
 import { Context } from '../../main.jsx';
+import { Context } from '../../main.jsx';
 
 
 const Header = (
