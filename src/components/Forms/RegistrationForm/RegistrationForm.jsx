@@ -42,7 +42,6 @@ const RegistrationForm = () => {
   return (
     // <div className={styles['overlay']}>
     <div className={styles['container']}>
-      <Header />
       <div className={styles['register-container']}>
         <form className="reg-form" onSubmit={handleSubmit(onSubmit)}>
           <h2 className={styles['register-container__title']}>

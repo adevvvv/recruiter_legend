@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 import notifications from '../../assets/image/notifications.svg';
 import profile from '../../assets/image/profile.svg';
 import SettingApplicant from '../SettingApplicant/SettingApplicant.jsx';
-import { Context } from '../../main';
 import { observer } from 'mobx-react-lite';
 import redHeart from '../../assets/image/redHeart.png';
 import logo from '../../assets/image/logo.png';

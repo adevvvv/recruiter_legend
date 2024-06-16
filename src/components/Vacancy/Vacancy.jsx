@@ -1,5 +1,3 @@
-import Header from "../Header/Header.jsx";
-
 import styles from './Vacancy.module.scss';
 import CardVacancy from "./CardVacancy/CardVacancy.jsx";
 import {useContext, useEffect, useState} from "react";
@@ -206,11 +204,10 @@ const Vacancy = () => {
 
     return (
         <div>
-            <Header/>
             <div className={styles['container']}>
 
                 <div className={styles['search']}>
-                    <input style={{paddingLeft:'15px', color:'white'}} onChange={handleChangeSearch} type={'search'}/>
+                    <input style={{paddingLeft: '15px', color: 'white'}} onChange={handleChangeSearch} type={'search'}/>
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                         <path
                             d="M12.6004 1.79688C6.97304 1.79688 2.40039 6.36953 2.40039 11.9969C2.40039 17.6242 6.97304 22.1969 12.6004 22.1969C14.827 22.1969 16.8848 21.4797 18.5629 20.2656L26.4566 28.1406L28.1441 26.4531L20.3441 18.6344C21.877 16.8484 22.8004 14.5305 22.8004 11.9969C22.8004 6.36953 18.2277 1.79688 12.6004 1.79688ZM12.6004 2.99688C17.5785 2.99688 21.6004 7.01875 21.6004 11.9969C21.6004 16.975 17.5785 20.9969 12.6004 20.9969C7.62227 20.9969 3.60039 16.975 3.60039 11.9969C3.60039 7.01875 7.62227 2.99688 12.6004 2.99688Z"
@@ -224,30 +221,37 @@ const Vacancy = () => {
                     <select name="sort" id="sort">
                         {
                             sort.map((el, i) =>
-                                <option value={el}>{el}</option>)
+                                <option key={i} value={el}>{el}</option>
+                            )
                         }
                     </select>
 
                     <select name="filter" id="filter">
                         {
                             filter.map((el, i) =>
-                                <option value={el}>{el}</option>)
+                                <option key={i} value={el}>{el}</option>)
                         }
                     </select>
                 </div>
 
-                <div style={{display: 'flex', marginTop:'30px', gap:'62px', }}>
+                <div style={{display: 'flex', marginTop: '30px', gap: '62px',}}>
 
-                    <div style={{display:'flex', flexDirection:'column', gap:'30px'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', gap: '30px'}}>
                         {
                             checkbox.map((el, i) => {
                                 return (
-                                    <div className={styles['filter']}>
+                                    <div key={i} className={styles['filter']}>
                                         <p>{el.title}</p>
                                         {
                                             el.date.map((variant, i) => {
                                                 return (
-                                                    <div style={{display:'flex', justifyContent:'left', gap:'5px', minWidth: '220px', textAlign:'left'}}>
+                                                    <div key={i} style={{
+                                                        display: 'flex',
+                                                        justifyContent: 'left',
+                                                        gap: '5px',
+                                                        minWidth: '220px',
+                                                        textAlign: 'left'
+                                                    }}>
                                                         <input id={variant} name={el.title} type="radio"/>
                                                         <label htmlFor={variant}>{variant}</label>
                                                     </div>
@@ -256,13 +260,13 @@ const Vacancy = () => {
                                             })
                                         }
                                     </div>
-                                    )
+                                )
 
-                        })
+                            })
                         }
                     </div>
 
-                    <div style={{display:'flex', gap:'50px', flexDirection:'column'}}>
+                    <div style={{display: 'flex', gap: '50px', flexDirection: 'column'}}>
                         {
                             vacancies.map((el, i) => (
                                 <div key={i}>

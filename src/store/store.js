@@ -70,7 +70,7 @@ export default class Store {
 
   async registration({ username, email, password }) {
     try {
-      console.log(username, email), password;
+      console.log(username, email, password);
       const response = await axios.post(
         API_URL + '/sign-up',
         { username, email, password },

@@ -2,7 +2,6 @@ import styles from './Anketa.module.scss';
 import Plus from '../Common/Plus.jsx';
 import { useRef, useState } from 'react';
 import BlockInput from './Input/BlockInput.jsx';
-import Header from '../Header/Header.jsx';
 import BlockSelect from './select/BlockSelect.jsx';
 import WorkExperience from './workExperience/workExperience.jsx';
 
@@ -552,7 +551,6 @@ const Anketa = () => {
 
   return (
     <div>
-      <Header />
       <form action="" onSubmit={handleSubmit}>
         <div
           style={{
@@ -579,7 +577,7 @@ const Anketa = () => {
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <div onClick={handleClick} className={styles['addPhoto']}>
                     {profileImage ? (
-                      <img
+                      <img alt={'imgProfile'}
                         className={styles['profileImg']}
                         src={profileImage}
                       />
@@ -604,23 +602,29 @@ const Anketa = () => {
                 // className={styles['rightInput']}
                 >
                   {baseInfo.slice(3, 5).map((el, i) => (
-                    <BlockInput
-                      handleChange={handleChange}
-                      type={el.type}
-                      id={el.name}
-                      width={el.width}
-                      title={el.title}
-                    />
+                      <div key={i}>
+                        <BlockInput
+                            handleChange={handleChange}
+                            type={el.type}
+                            id={el.name}
+                            width={el.width}
+                            title={el.title}
+                        />
+                      </div>
+
                   ))}
 
                   {selectInfo.map((el, i) => (
-                    <BlockSelect
-                      handleChange={handleChange}
-                      title={el.title}
-                      id={el.name}
-                      width={el.width}
-                      date={el.date}
-                    />
+                      <div key={i}>
+                        <BlockSelect
+                            handleChange={handleChange}
+                            title={el.title}
+                            id={el.name}
+                            width={el.width}
+                            date={el.date}
+                        />
+                      </div>
+
                   ))}
 
                   <div
@@ -640,13 +644,16 @@ const Anketa = () => {
 
                 <div style={{ marginBottom: '26px' }}>
                   {baseInfo.slice(7, 9).map((el, i) => (
-                    <BlockInput
-                      handleChange={handleChange}
-                      type={el.type}
-                      id={el.name}
-                      width={el.width}
-                      title={el.title}
-                    />
+                      <div key={i}>
+                        <BlockInput
+                            handleChange={handleChange}
+                            type={el.type}
+                            id={el.name}
+                            width={el.width}
+                            title={el.title}
+                        />
+                      </div>
+
                   ))}
                 </div>
 
@@ -655,14 +662,16 @@ const Anketa = () => {
                 // style={{display: 'flex', flexDirection: 'column', textAlign: 'left'}}
                 >
                   {baseInfo.slice(11, 13).map((el, i) => (
-                    <BlockInput
-                      handleChange={handleChange}
-                      title={el.title}
-                      id={el.name}
-                      date={el.date}
-                      width={el.width}
-                      marginTop={0}
-                    />
+                      <div key={i}>
+                        <BlockInput
+                            handleChange={handleChange}
+                            title={el.title}
+                            id={el.name}
+                            date={el.date}
+                            width={el.width}
+                        />
+                      </div>
+
                   ))}
                 </div>
               </div>
@@ -677,13 +686,16 @@ const Anketa = () => {
                   }}
                 >
                   {baseInfo.slice(0, 3).map((el, i) => (
-                    <BlockInput
-                      handleChange={handleChange}
-                      type={el.type}
-                      id={el.name}
-                      width={el.width}
-                      title={el.title}
-                    />
+                      <div key={i}>
+                        <BlockInput
+                            handleChange={handleChange}
+                            type={el.type}
+                            id={el.name}
+                            width={el.width}
+                            title={el.title}
+                        />
+                      </div>
+
                   ))}
                 </div>
                 <div
@@ -722,24 +734,30 @@ const Anketa = () => {
                   </div>
 
                   {baseInfo.slice(5, 7).map((el, i) => (
-                    <BlockInput
-                      handleChange={handleChange}
-                      type={el.type}
-                      id={el.name}
-                      width={el.width}
-                      title={el.title}
-                    />
+                      <div key={i}>
+                        <BlockInput
+                            handleChange={handleChange}
+                            type={el.type}
+                            id={el.name}
+                            width={el.width}
+                            title={el.title}
+                        />
+                      </div>
+
                   ))}
 
                   <div style={{ marginBottom: '98px' }}>
                     {vyz.map((el, i) => (
-                      <BlockInput
-                        handleChange={handleChange}
-                        type={el.type}
-                        id={el.name}
-                        width={el.width}
-                        title={el.title}
-                      />
+                        <div key={i}>
+                          <BlockInput
+                              handleChange={handleChange}
+                              type={el.type}
+                              id={el.name}
+                              width={el.width}
+                              title={el.title}
+                          />
+                        </div>
+
                     ))}
                   </div>
                 </div>
@@ -748,13 +766,16 @@ const Anketa = () => {
                 // style={{marginBottom: '66px'}}
                 >
                   {baseInfo.slice(9, 11).map((el, i) => (
-                    <BlockInput
-                      handleChange={handleChange}
-                      type={el.type}
-                      id={el.name}
-                      width={el.width}
-                      title={el.title}
-                    />
+                      <div key={i}>
+                        <BlockInput
+                            handleChange={handleChange}
+                            type={el.type}
+                            id={el.name}
+                            width={el.width}
+                            title={el.title}
+                        />
+                      </div>
+
                   ))}
                 </div>
 
@@ -763,13 +784,15 @@ const Anketa = () => {
                 >
                   <div style={{ marginTop: '60px' }}>
                     {baseInfo.slice(13, 17).map((el, i) => (
-                      <BlockSelect
-                        handleChange={handleChange}
-                        title={el.title}
-                        id={el.name}
-                        width={el.width}
-                        date={el.date}
-                      />
+                        <div key={i}>
+                          <BlockSelect
+                              handleChange={handleChange}
+                              title={el.title}
+                              id={el.name}
+                              width={el.width}
+                              date={el.date}
+                          />
+                        </div>
                     ))}
                   </div>
                 </div>

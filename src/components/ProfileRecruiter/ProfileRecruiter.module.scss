@@ -2,7 +2,6 @@
     background: rgba(84, 51, 246, 0.7);
     width: 40%;
     height: 222px;
-    gap: 0px;
     border-radius: 20px;
     display: flex;
     // padding: 40px 20px;
@@ -26,26 +25,26 @@
             font-size: 20px;
             font-weight: 700;
             line-height: 27.32px;
-            text-align: left; 
+            text-align: left;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             user-select: all;
         }
     }
-}   
+}
 
 .container {
     height: 100vh;
     display: flex;
     flex-direction: column;
     // justify-content: space-between;
-}  
+}
 
 .cards {
     display: flex;
     justify-content: center;
-    gap: 20px;  
+    gap: 20px;
     background: rgba(118, 92, 248, 0.8);
     border-radius: 20px;
     width: 1148px;
@@ -62,14 +61,14 @@
     justify-content: center;
     flex-direction: column;
     gap: 20px;
-  
-  
+
+
     .blockForm {
       display: flex;
       flex-direction: column;
       gap: 20px;
-  
-  
+
+
     //   input {
     //     color: #5775CD;
     //     font-size: 20px;
@@ -81,27 +80,27 @@
     //     padding: 15px;
     //     border: none;
     //     width: 250px;
-  
+
     //   }
-  
+
       .inputName {
         width: 520px;
       }
-  
+
       .blockNetwork {
         display: flex;
         gap: 15px;
         justify-content: center;
       }
-  
+
     }
-  
+
 }
 
 .responseCard {
     display: flex;
     justify-content: center;
-    flex-direction: column;   
+    flex-direction: column;
     width: 48%
 }
 

@@ -30,7 +30,7 @@ const SettingApplicant = ({ setIsRole }) => {
     <div className={styles['container']}>
       {menu.map((el, i) => {
         return (
-          <div>
+          <div key={i}>
             <button onClick={() => onNavigate(el.navigate)}>{el.title}</button>
             <br />
           </div>
