@@ -9,9 +9,12 @@ import SettingApplicant from '../SettingApplicant/SettingApplicant.jsx';
 import { observer } from 'mobx-react-lite';
 import redHeart from '../../assets/image/redHeart.png';
 import logo from '../../assets/image/logo.png';
+import { Context } from '../../main.jsx';
 
 
-const Header = ({ isRole, setIsRole }) => {
+const Header = (
+  // { isRole, setIsRole }
+) => {
   // const [popupLoginFormActive, setPopupLoginFormActive] = useState(false);
   const { store } = useContext(Context);
   const [isSetting, setIsSetting] = useState(false);
@@ -41,18 +44,13 @@ const Header = ({ isRole, setIsRole }) => {
 
                     <Link to="/">главная</Link>
                     {/* <a href="#">главная</a> */}
-<<<<<<< HEAD
                     <Link to="/vacancy">вакансии</Link>
-                    <a href="#">новости</a>
-=======
-                    <a href="/vacancy">вакансии</a>
-                    <a href="/news">новости</a>
->>>>>>> upstream/frontend
+                    <Link to="/news">новости</Link>
                 </div>
             </div>
 
       {
-        (isRole  === 'applicant')||(store.userData.role === "ROLE_APPLICANT") ? (
+        (store.userData.role) ? (
           <div className={styles['blockIcon']}>
               <img
                   src={redHeart}
