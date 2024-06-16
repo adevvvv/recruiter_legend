@@ -3,8 +3,8 @@ import { makeAutoObservable } from 'mobx';
 import AuthService from '../utils/AuthService';
 import axios from 'axios';
 import { API_URL } from '../http';
-import Vacancies from "../utils/vacancies.js";
-import NewsService from "../utils/newsService.js";
+import Vacancies from '../utils/vacancies.js';
+import NewsService from '../utils/newsService.js';
 import ApplicantService from '../utils/ApplicantService.js';
 
 // const history = createBrowserHistory();
@@ -113,7 +113,6 @@ export default class Store {
     this.setTokens({});
   }
 
-
   async getVacancies() {
     try {
       const response = await Vacancies.getVacancies();
@@ -133,7 +132,6 @@ export default class Store {
       return null;
     }
   }
-
 
   async postResume(dataResume) {
     try {

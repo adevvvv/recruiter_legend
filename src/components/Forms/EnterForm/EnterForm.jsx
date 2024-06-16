@@ -45,7 +45,7 @@ const EnterForm = () => {
     setAnswer(answer);
     console.log(store.userData.role);
     if (store.userData.role) {
-      navigate("/profile")
+      navigate('/profile');
     }
     // if (answer === 'anketa is exist') {
     //   navigate('/anketa');

@@ -8,9 +8,9 @@ const PrivateRoute = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (store.userData.role === "") {
+    if (store.userData.role === '') {
       console.log(store.userData.role);
-      navigate("/");
+      navigate('/');
     }
   }, [store.userData.role, navigate]);
 

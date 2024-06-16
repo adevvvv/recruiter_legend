@@ -20,7 +20,7 @@ const RecruiterInfo = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={chat} alt="chat"  />
+            <img src={chat} alt="chat" />
           </a>
         </div>
       </div>
