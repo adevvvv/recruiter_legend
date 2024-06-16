@@ -5,9 +5,11 @@ import BlockInput from './Input/BlockInput.jsx';
 import BlockSelect from './select/BlockSelect.jsx';
 import WorkExperience from './workExperience/workExperience.jsx';
 import { Context } from '../../main.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Anketa = () => {
 
+  const navigate = useNavigate();
   const { store } = useContext(Context);
   const [dataResume, setDataResume] = useState({
     id: 0,
@@ -447,6 +449,7 @@ const Anketa = () => {
     getData();
     await store.postResume(dataResume);
     console.log(data);
+    navigate('/profile');
   };
 
   const getData = () => {
