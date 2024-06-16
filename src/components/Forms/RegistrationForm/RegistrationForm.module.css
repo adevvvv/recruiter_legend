@@ -1,0 +1,121 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+.container__img {
+  margin-bottom: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(248, 245, 245, 0.5);
+  display: flex;
+  justify-content: center;
+}
+
+.register-container {
+  width: 44%;
+  height: fit-content;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(255, 200, 73);
+  margin: auto;
+  z-index: 2;
+}
+.register-container__title {
+  font-weight: 700;
+  line-height: 35.52px;
+  color: rgb(87, 117, 205);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+.register-container__label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 72%;
+}
+.register-container__label-text {
+  color: rgb(87, 117, 205);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 17.76px;
+  text-align: left;
+}
+.register-container__checkbox {
+  margin-right: 1.5rem;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-input {
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 20px;
+  background: #FFF;
+  padding: 15px;
+  border: none;
+  width: 72%;
+  height: 42px;
+  gap: 0;
+  opacity: 0;
+  margin: auto;
+  font-size: 16px;
+  line-height: 21.86px;
+  text-align: left;
+  padding-left: 10px;
+  color: rgb(87, 117, 205);
+  margin-bottom: 20px;
+}
+
+.input-error {
+  border: 1px solid red;
+}
+
+button {
+  border-radius: 20px;
+  background-color: #6C7FBD;
+  color: #FFF;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 7px 33px 6px 48px;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.enter-error {
+  color: red;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  padding-bottom: 1rem;
+}
+
+/*# sourceMappingURL=RegistrationForm.module.css.map */

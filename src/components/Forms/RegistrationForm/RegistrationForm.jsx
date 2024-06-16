@@ -22,23 +22,26 @@ const RegistrationForm = () => {
 
   const password = watch('password');
 
-
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     if (data.password !== data.password_repeat) {
-      return;}
+      return;
+    }
     console.log(data);
     reset();
-    const isRegOk =await store.registration({username: data.username, email: data.email, password: data.password});
-    if(isRegOk){
+    const isRegOk = await store.registration({
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    });
+    if (isRegOk) {
       store.errorRegistration = '';
       navigate('/applicantinfo');
-    } 
+    }
   };
 
   return (
     // <div className={styles['overlay']}>
     <div className={styles['container']}>
-      <Header />
       <div className={styles['register-container']}>
         <form className="reg-form" onSubmit={handleSubmit(onSubmit)}>
           <h2 className={styles['register-container__title']}>

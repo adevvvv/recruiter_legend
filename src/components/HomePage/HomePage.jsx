@@ -1,42 +1,29 @@
-import Header from '../Header/Header.jsx';
-import AppName from './AppName.jsx';
-import bottomImage from '../../assets/image/bottomImage.png';
+// import AppName from './AppName.jsx';
+// import bottomImage from '../../assets/image/bottomImage.png';
 import styles from './HomePage.module.scss';
-import { useState } from 'react';
+import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
+import ProfileRecruiter from '../ProfileRecruiter/ProfileRecruiter.jsx';
+import { useContext } from 'react';
+import { Context } from '../../main.jsx';
 
 // import ProfileApplicant from '../ProfileApplicant/ProfileApplicant.jsx';
 
-const HomePage = () => {
-  // false - не авторизован, applicant, recruiter
-  // const [isRole, setIsRole] = useState('applicant');
+const HomePage = () =>
+  // {isRole}
+  {
+    const { store } = useContext(Context);
 
-  return (
-    <div className={styles['container']}>
-      <Header  />
-       
-        {/* <div style={{ alignSelf: 'center' }}> */}
-          <AppName />
-          <img alt={'bottomImage'} src={bottomImage} />
-        {/* </div> */}
-       
-    </div>
-  );
-  
-  // return (
-  //   <div className={styles['container']}>
-  //     <Header isRole={isRole} />
-  //     {!isRole ? (
-  //       <div style={{ alignSelf: 'center' }}>
-  //         <AppName />
-  //         <img alt={'bottomImage'} src={bottomImage} />
-  //       </div>
-  //     ) : isRole === 'applicant' ? (
-  //       <ProfileApplicant />
-  //     ) : (
-  //       <div>{/*    Профиль рекрутера*/}</div>
-  //     )}
-  //   </div>
-  // );
-};
+    return (
+      <div className={styles['container']}>
+        {store.userData.role === 'ROLE_APPLICANT' ? (
+          <ProfileApplicant />
+        ) : (
+          <div>
+            <ProfileRecruiter />
+          </div>
+        )}
+      </div>
+    );
+  };
 
 export default HomePage;

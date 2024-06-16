@@ -1,6 +1,5 @@
 import styles from './ProfileApplicant.module.scss';
 import profile from '../../assets/image/profile.svg';
-import chep from '../../assets/image/chep.png';
 import vk from '../../assets/image/vk.png';
 import whatsapp from '../../assets/image/whatsapp.png';
 import telegram from '../../assets/image/telegram.png';
@@ -9,7 +8,8 @@ import { ButtonWithChain } from '../Common/buttons';
 
 const BaseInfo = ({ setIsFormInfo }) => {
   const [formData, setFormData] = useState({
-    name: 'Имя пользователя',
+    name: 'username',
+    post: 'Должность',
     bird: 'Дата рождения',
     city: 'Город',
     phone: '+79999999999',
@@ -40,14 +40,23 @@ const BaseInfo = ({ setIsFormInfo }) => {
           <img src={profile} alt="profile" />
         </div>
         <div className={styles['blockForm']}>
-          <input
-            className={styles['inputName']}
-            id={'name'}
-            name={'name'}
-            type="text"
-            value={formData.name}
-            onChange={onHandleChange}
-          />
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <input
+              id={'name'}
+              name={'name'}
+              type="text"
+              value={formData.name}
+              onChange={onHandleChange}
+            />
+
+            <input
+              id={'post'}
+              name={'post'}
+              type="text"
+              value={formData.post}
+              onChange={onHandleChange}
+            />
+          </div>
 
           <div style={{ display: 'flex', gap: '20px' }}>
             <input

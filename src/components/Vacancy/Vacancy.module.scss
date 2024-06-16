@@ -1,0 +1,86 @@
+
+.container {
+  padding: 0 65px;
+
+  .addVacancies {
+	color: #FFF;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	border-radius: 20px;
+	background: rgba(169, 152, 250, 0.90);
+	padding: 3px 16px;
+  }
+
+
+  .search {
+	position: relative;
+	display: flex;
+	gap: 10px;
+	margin-bottom: 34px;
+	color: #FFFFFF;
+
+	button {
+	  margin: 0;
+	  color: #FFF;
+	  font-size: 18px;
+	  font-style: normal;
+	  font-weight: 700;
+	  line-height: normal;
+	  border-radius: 20px;
+	  background: rgba(160, 141, 250, 0.80);
+	  border: none;
+	}
+
+	input {
+	  border-radius: 20px;
+	  background: rgba(160, 141, 250, 0.80);
+	  width: 688px;
+	  height: 33px;
+	  flex-shrink: 0;
+	  border: none;
+	}
+
+	svg {
+	  position: absolute;
+	  top: 2px;
+	  left: 642px;
+	}
+
+  }
+
+  select {
+	text-align: center;
+	padding: 5px 10px;
+	color: #FFF;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	border-radius: 20px;
+	background: #A08DFA;
+	border: none;
+  }
+
+  .filter {
+	border-radius: 20px;
+	background: rgba(160, 141, 250, 0.90);
+	color: #FFF;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	padding: 8px 17px;
+
+	p {
+	  font-size: 20px;
+	}
+
+	label {
+	  font-size: 18px;
+	}
+  }
+
+
+
+}

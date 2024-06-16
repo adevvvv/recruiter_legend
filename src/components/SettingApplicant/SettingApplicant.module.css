@@ -1,0 +1,20 @@
+.container {
+  border-radius: 20px;
+  background: rgba(85, 62, 147, 0.6);
+  padding: 10px;
+}
+.container button {
+  cursor: pointer;
+  width: 236px;
+  color: #5775CD;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border-radius: 20px;
+  background: #FFF;
+  border: none;
+  text-align: center;
+}
+
+/*# sourceMappingURL=SettingApplicant.module.css.map */

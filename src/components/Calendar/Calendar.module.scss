@@ -1,9 +1,9 @@
-
+@import '../../styles/mixins';
 
 .container {
 
   margin-top: 50px;
-
+  
   h2 {
 	margin-bottom: 50px;
 
@@ -20,19 +20,22 @@
 
 
 	.windowDate {
-	  white-space: normal;
-	  padding: 10px;
-	  border-radius: 15px;
-	  border: 1px solid black;
+		@include date;
+	}
+	
+    .dateRecruiter {
+       @include date;
+	   border: none;  
 	}
 
 	.selectedDate {
-	  background-color: greenyellow;
+		background-color: rgba(255, 200, 73, 1);
 	}
+
   }
 
   .blockTime {
-	margin-top: 30px;
+	margin-top: 1rem;
 	display: flex;
 	gap: 30px;
 
@@ -41,10 +44,17 @@
 	  border-radius: 10px;
 	  border: 1px solid black;
 	  white-space: nowrap;
-
+      background-color: white;
 	}
+
+	.timeRecruiter {
+		@include time;
+		border: none;
+		width: 21%;
+	}
+
 	.selectedTime {
-	  background-color: greenyellow;
+		background-color: rgba(255, 200, 73, 1);
 	}
   }
 
@@ -54,4 +64,13 @@
 	border-radius: 10px;
 	border: 1px solid black;
   }
+
 }
+
+.containerRecruiter {
+	background-color:  rgba(118, 92, 248, 0.8);
+	border-radius: 20px;
+	margin: auto;
+	height: 222px;
+	padding: 15px;
+  }

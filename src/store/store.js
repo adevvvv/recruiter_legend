@@ -3,6 +3,9 @@ import { makeAutoObservable } from 'mobx';
 import AuthService from '../utils/AuthService';
 import axios from 'axios';
 import { API_URL } from '../http';
+import Vacancies from '../utils/vacancies.js';
+import NewsService from '../utils/newsService.js';
+import ApplicantService from '../utils/ApplicantService.js';
 
 // const history = createBrowserHistory();
 
@@ -15,7 +18,7 @@ export default class Store {
   };
 
   isAuth = false;
-  isAnketaExist = false;
+  isResumeExist = false;
   errorRegistration = '';
 
   constructor() {
@@ -41,6 +44,10 @@ export default class Store {
     localStorage.setItem('token', access);
   }
 
+  setIsResumeExist(bool) {
+    this.isResumeExist = bool;
+  }
+
   async login(username, password) {
     try {
       const response = await AuthService.login(username, password);
@@ -60,7 +67,8 @@ export default class Store {
       console.log(
         error.response?.data?.message ||
           error.response?.data?.detail ||
-          error.response?.detail || error,
+          error.response?.detail ||
+          error,
       );
       return error.response.status;
     }
@@ -68,7 +76,7 @@ export default class Store {
 
   async registration({ username, email, password }) {
     try {
-      console.log(username, email), password;
+      console.log(username, email, password);
       const response = await axios.post(
         API_URL + '/sign-up',
         { username, email, password },
@@ -87,12 +95,11 @@ export default class Store {
       console.log(this.userData);
       return true;
     } catch (error) {
-      this.errorRegistration =error
-        // JSON.parse(e.response?.request?.responseText).email[0] ||
-        // JSON.parse(e.response?.request?.responseText).password[0] ||
-        // JSON.parse(e.response?.request?.responseText).username[0]; 
+      this.errorRegistration = error;
+      // JSON.parse(e.response?.request?.responseText).email[0] ||
+      // JSON.parse(e.response?.request?.responseText).password[0] ||
+      // JSON.parse(e.response?.request?.responseText).username[0];
       console.log(this.errorRegistration);
- 
 
       // console.log(e.response?.data?.message|| e.response?.data?.detail||e.response?.request?.responseText|| e);
     }
@@ -104,5 +111,38 @@ export default class Store {
     this.setAuth(false);
     this.setUser({});
     this.setTokens({});
+  }
+
+  async getVacancies() {
+    try {
+      const response = await Vacancies.getVacancies();
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  async getNews() {
+    try {
+      const response = await NewsService.getNews();
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  async postResume(dataResume) {
+    try {
+      console.log(dataResume);
+      const response = await ApplicantService.sendAnketa(dataResume);
+      this.setIsResumeExist(true);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }
