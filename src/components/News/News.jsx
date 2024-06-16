@@ -3,10 +3,10 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../main.jsx';
 import { useQuery } from 'react-query';
 import Plus from '../Common/Plus.jsx';
+ import  Spinner  from '../Spinner/Spinner.jsx';
 
 const News = () => {
   const { store } = useContext(Context);
-
   const [news, setNews] = useState([
     {
       img: 'https://habrastorage.org/getpro/habr/upload_files/39f/686/6df/39f6866df9ec1c8395a306deb767145e.JPG',
@@ -66,18 +66,25 @@ const News = () => {
     },
   ]);
 
-  const { data } = useQuery(['getNews'], () => store.getNews(), {
+  const { data, status } = useQuery(['getNews'], () => store.getNews(), {
     staleTime: Infinity, // Запрос выполняется только один раз
     cacheTime: Infinity, // Кэширование данных на неопределённое время
   });
 
   useEffect(() => {
+  
     if (data) {
       setNews(data);
+    
     }
   }, [data]);
 
+  if (status === 'loading') {
+    return <Spinner />;
+  }
+
   return (
+     
     <div className={styles['container']}>
       <div
         style={{
