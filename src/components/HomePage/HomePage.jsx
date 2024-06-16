@@ -15,13 +15,9 @@ const HomePage = () =>
 
     return (
       <div className={styles['container']}>
-        {store.userData.role === 'ROLE_APPLICANT' ? (
-          <ProfileApplicant />
-        ) : (
-          <div>
-            <ProfileRecruiter />
-          </div>
-        )}
+          {store.userData.role === 'ROLE_APPLICANT' && <ProfileApplicant />}
+          {store.userData.role === 'ROLE_RECRUITER' && <ProfileRecruiter />}
+          {store.userData.role === 'ROLE_ADMIN' && <div>Профиль админа пока не доступен</div>}
       </div>
     );
   };
