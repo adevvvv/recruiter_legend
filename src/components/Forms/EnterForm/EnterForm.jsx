@@ -26,7 +26,7 @@ const EnterForm = () => {
   // };
 
   const handleRegister = () => {
-    navigate('/register');
+    navigate('/auth/register');
   };
 
   const onSubmit = async (data) => {

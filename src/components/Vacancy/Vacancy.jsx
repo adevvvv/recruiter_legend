@@ -3,10 +3,12 @@ import CardVacancy from './CardVacancy/CardVacancy.jsx';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../main.jsx';
 import { useQuery } from 'react-query';
+import Spinner from '../Spinner/Spinner.jsx';
 
 const Vacancy = () => {
   const { store } = useContext(Context);
-
+  const [loading, setLoading] = useState(false);
+  const [valueSearch, setValueSearch] = useState(null);
   const [vacancies, setVacancies] = useState([
     {
       title: 'Инженер по автоматизированному тестированию на Python',
@@ -130,13 +132,19 @@ const Vacancy = () => {
     },
   ]);
 
-  const { data } = useQuery(['getVacancies'], () => store.getVacancies());
+  const { data, status } = useQuery(['getVacancies'], () =>
+    store.getVacancies(),
+  );
 
   useEffect(() => {
     if (data) {
       setVacancies(data);
     }
   }, [data]);
+
+  if (status === 'loading') {
+    return <Spinner />;
+  }
 
   const sort = [
     'По соответствию',
@@ -197,7 +205,7 @@ const Vacancy = () => {
     },
   ];
 
-  const [valueSearch, setValueSearch] = useState(null);
+  // const [valueSearch, setValueSearch] = useState(null);
 
   const handleChangeSearch = (e) => {
     const { value } = e.target;
@@ -213,12 +221,18 @@ const Vacancy = () => {
 
   const onClickReset = () => {
     (async () => {
+      setLoading(true);
       const response = await store.getVacancies();
       if (response) {
         setVacancies(response);
       }
+      setLoading(false);
     })();
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div>
