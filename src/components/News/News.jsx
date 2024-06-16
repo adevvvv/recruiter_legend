@@ -5,7 +5,9 @@ import {Context} from "../../main.jsx";
 import {useQuery} from "react-query";
 import Plus from "../Common/Plus.jsx";
 
-const News = ({isRole}) => {
+const News = () => {
+
+    const { store } = useContext(Context);
 
     const [news, setNews] = useState([
         {
@@ -60,8 +62,6 @@ const News = ({isRole}) => {
         }
     ]);
 
-    const {store} = useContext(Context);
-
     const { data} = useQuery(['getNews'],
         () => store.getNews(),{
         staleTime: Infinity, // Запрос выполняется только один раз
@@ -81,7 +81,7 @@ const News = ({isRole}) => {
                 <h3>Новости</h3>
 
                 {
-                    isRole === 'recruiter' ?
+                    store.userData.role === 'ROLE_RECRUITER' ?
                         <div style={{display:'flex', gap:'9px', alignItems:'center'}}>
                             <Plus/>
                             <h3>Добавить новость</h3>
@@ -95,7 +95,7 @@ const News = ({isRole}) => {
             <div className={styles['blockNews']}>
                 {
                     news.map((el, i) => (
-                        <div className={styles['news']}>
+                        <div key={i} className={styles['news']}>
                             <div className={styles['containerImg']}>
                                 <img className={styles['imgNews']} src={el.img} alt="icon"/>
                             </div>
