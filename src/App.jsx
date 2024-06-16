@@ -19,7 +19,7 @@ import {QueryClient, QueryClientProvider} from "react-query";
 function App() {
 
   // false - не авторизован, applicant, recruiter
-  const [isRole, setIsRole] = useState('recruiter');
+  const [isRole, setIsRole] = useState('applicant');
 
   const query = new QueryClient();
 

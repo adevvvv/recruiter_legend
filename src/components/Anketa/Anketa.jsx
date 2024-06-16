@@ -464,7 +464,7 @@ const Anketa = () => {
       desiredSalary: dataResume.desiredSalary,
       workSchedule: dataResume.workSchedule,
       employmentType: dataResume.employmentType,
-      skills: dataResume.skills,
+      skills: dataResume.skills.split(" ,"),
 
       message: 'string',
       resumeAttachment: 'string',
@@ -682,7 +682,7 @@ const Anketa = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     textAlign: 'left',
-                    marginBottom: '12px',
+                    marginBottom: '28px',
                   }}
                 >
                   {baseInfo.slice(0, 3).map((el, i) => (
@@ -711,9 +711,10 @@ const Anketa = () => {
                       display: 'flex',
                       justifyContent: 'space-between',
                       width: '401px',
+                      margin: '0'
                     }}
                   >
-                    <button
+                    <button style={{margin: '0', height:'29px'}}
                       type={'button'}
                       className={`${dataResume.gender === 'male' ? styles['selectedGender'] : null}`}
                       onClick={() =>
@@ -722,7 +723,7 @@ const Anketa = () => {
                     >
                       Мужской
                     </button>
-                    <button
+                    <button style={{margin: '0', height:'29px'}}
                       type={'button'}
                       className={`${dataResume.gender === 'female' ? styles['selectedGender'] : null}`}
                       onClick={() =>
@@ -746,7 +747,7 @@ const Anketa = () => {
 
                   ))}
 
-                  <div style={{ marginBottom: '98px' }}>
+                  <div style={{ marginBottom: '103px' }}>
                     {vyz.map((el, i) => (
                         <div key={i}>
                           <BlockInput
