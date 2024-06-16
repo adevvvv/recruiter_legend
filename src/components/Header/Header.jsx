@@ -41,7 +41,7 @@ const Header = ({ isRole, setIsRole }) => {
                     <Link to="/">главная</Link>
                     {/* <a href="#">главная</a> */}
                     <a href="/vacancy">вакансии</a>
-                    <a href="#">новости</a>
+                    <a href="/news">новости</a>
                 </div>
             </div>
 

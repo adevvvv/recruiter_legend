@@ -1,12 +1,7 @@
 .container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
 }
-.container img {
-  margin-bottom: 10px;
-}
-
 .blockTitle {
   color: #5775CD;
   background-color: #FFC849;

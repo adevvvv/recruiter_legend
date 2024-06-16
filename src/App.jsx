@@ -13,28 +13,36 @@ import ProfileRecruiter from './components/ProfileRecruiter/ProfileRecruiter.jsx
 import ResponseCard from './components/ProfileRecruiter/ResponseCard.jsx';
 import Header from "./components/Header/Header.jsx";
 import {useState} from "react";
+import News from "./components/News/News.jsx";
+import {QueryClient, QueryClientProvider} from "react-query";
 
 function App() {
 
   // false - не авторизован, applicant, recruiter
-  const [isRole, setIsRole] = useState('applicant');
+  const [isRole, setIsRole] = useState('recruiter');
+
+  const query = new QueryClient();
 
   return (
     <>
-      <Header isRole={isRole} setIsRole={setIsRole}/>
-      <Routes>
-        <Route path="/" element={<HomePage isRole={isRole}/>} />
-        <Route path="/auth/login" element={<EnterForm />} />
-        <Route path="/calendar" element={<Calendar />} />
-        <Route path="/applicant" element={<ProfileApplicant />} />
-        <Route path="/applicantinfo" element={<BaseInfo />} />
-        <Route path="/register" element={<RegistrationForm />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/anketa" element={<Anketa />} />
-        <Route path="/recruiter" element={<ProfileRecruiter />} />
-        <Route path="/responsecard" element={<ResponseCard />} />
-        <Route path="/vacancy" element={<Vacancy/>} />
-      </Routes>
+      <QueryClientProvider client={query}>
+        <Header isRole={isRole} setIsRole={setIsRole}/>
+        <Routes>
+          <Route path="/" element={<HomePage isRole={isRole}/>} />
+          <Route path="/auth/login" element={<EnterForm />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/applicant" element={<ProfileApplicant />} />
+          <Route path="/applicantinfo" element={<BaseInfo />} />
+          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/anketa" element={<Anketa />} />
+          <Route path="/recruiter" element={<ProfileRecruiter />} />
+          <Route path="/responsecard" element={<ResponseCard />} />
+          <Route path="/vacancy" element={<Vacancy isRole={isRole}/>} />
+          <Route path="/news" element={<News isRole={isRole}/>} />
+        </Routes>
+      </QueryClientProvider>
+
     </>
   );
 }

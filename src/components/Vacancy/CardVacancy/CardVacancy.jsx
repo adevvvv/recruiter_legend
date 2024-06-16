@@ -1,11 +1,19 @@
 import styles from './CardVacancy.module.scss';
 import heart from '../../../assets/image/heart.png';
 import recsoft from '../../../assets/image/reksoft-1 1.svg';
+import cross from '../../../assets/image/cross.png';
 
-const CardVacancy = ({title, type, tasks}) => {
+const CardVacancy = ({title, type, tasks, isCross}) => {
 
     return (
         <div className={styles['container']}>
+            {
+                isCross ?
+                    <img className={styles['cross']} src={cross} alt="cross"/>
+                        :
+                    null
+            }
+
             <h1>{title}</h1>
             <div style={{display: 'flex', marginTop: '15px', gap: '30px'}}>
                 <div className={styles['company']}>

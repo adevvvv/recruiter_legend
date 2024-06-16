@@ -4,6 +4,7 @@ import AuthService from '../utils/AuthService';
 import axios from 'axios';
 import { API_URL } from '../http';
 import Vacancies from "../utils/vacancies.js";
+import NewsService from "../utils/newsService.js";
 
 // const history = createBrowserHistory();
 
@@ -111,6 +112,16 @@ export default class Store {
   async getVacancies() {
     try {
       const response = await Vacancies.getVacancies();
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  async getNews() {
+    try {
+      const response = await NewsService.getNews();
       return response.data;
     } catch (error) {
       console.log(error);

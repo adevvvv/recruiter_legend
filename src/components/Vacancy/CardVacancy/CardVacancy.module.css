@@ -7,7 +7,12 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 34px 30px 19px 30px;
-  max-width: 1000px;
+  position: relative;
+}
+.container .cross {
+  position: absolute;
+  top: 6px;
+  right: 6px;
 }
 .container .company {
   display: flex;

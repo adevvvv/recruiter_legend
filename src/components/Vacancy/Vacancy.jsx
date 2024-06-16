@@ -2,8 +2,9 @@ import styles from './Vacancy.module.scss';
 import CardVacancy from "./CardVacancy/CardVacancy.jsx";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../../main.jsx";
+import {useQuery} from "react-query";
 
-const Vacancy = () => {
+const Vacancy = ({isRole}) => {
 
     const {store} = useContext(Context);
 
@@ -110,15 +111,13 @@ const Vacancy = () => {
         }
     ]);
 
-    useEffect(() => {
-        (async () => {
-            const response = await store.getVacancies();
-            if (response) {
-                setVacancies(response);
-            }
-        })();
+    const {data} = useQuery(['getVacancies'], () => store.getVacancies());
 
-    }, []);
+    useEffect(() => {
+        if (data) {
+            setVacancies(data);
+        }
+    }, [data]);
 
     const sort = [
         'По соответствию',
@@ -217,21 +216,37 @@ const Vacancy = () => {
                     <button onClick={onClickReset}>Сброс</button>
                 </div>
 
-                <div style={{display: 'flex', gap: '41px'}}>
-                    <select name="sort" id="sort">
-                        {
-                            sort.map((el, i) =>
-                                <option key={i} value={el}>{el}</option>
-                            )
-                        }
-                    </select>
+                <div style={{display: 'flex', justifyContent:'space-between'}}>
+                    <div style={{display: 'flex', gap: '41px'}}>
+                        <select name="sort" id="sort">
+                            {
+                                sort.map((el, i) =>
+                                    <option key={i} value={el}>{el}</option>
+                                )
+                            }
+                        </select>
 
-                    <select name="filter" id="filter">
-                        {
-                            filter.map((el, i) =>
-                                <option key={i} value={el}>{el}</option>)
-                        }
-                    </select>
+                        <select name="filter" id="filter">
+                            {
+                                filter.map((el, i) =>
+                                    <option key={i} value={el}>{el}</option>)
+                            }
+                        </select>
+                    </div>
+
+
+                    {
+                        isRole === 'recruiter'
+                        ?
+                            <div className={styles['addVacancies']}>
+                                Добавить вакансию
+                            </div>
+
+                            :
+                            null
+                    }
+
+
                 </div>
 
                 <div style={{display: 'flex', marginTop: '30px', gap: '62px',}}>
@@ -270,7 +285,7 @@ const Vacancy = () => {
                         {
                             vacancies.map((el, i) => (
                                 <div key={i}>
-                                    <CardVacancy title={el.title} type={el.type} tasks={el.tasks}/>
+                                    <CardVacancy isCross={isRole === 'recruiter'} title={el.title} type={el.type} tasks={el.tasks}/>
                                 </div>
                             ))
                         }
