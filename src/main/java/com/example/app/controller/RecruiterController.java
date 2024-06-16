@@ -5,8 +5,8 @@ import com.example.app.domain.model.Profile;
 import com.example.app.domain.model.Response;
 import com.example.app.domain.model.TimeSlot;
 import com.example.app.service.ProfileService;
+import com.example.app.service.RecruiterService;
 import com.example.app.service.ResponseService;
-import com.example.app.service.TimeSlotService;
 import com.example.app.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -30,7 +30,7 @@ public class RecruiterController {
     private UserService userService;
 
     @Autowired
-    private TimeSlotService timeSlotService;
+    private RecruiterService recruiterService;
 
     @Autowired
     private ResponseService responseService;
@@ -39,37 +39,27 @@ public class RecruiterController {
     private ProfileService profileService;
 
     @Operation(summary = "Получить профиль рекрутера по ID")
-    @GetMapping("/{id}")
+    @GetMapping("/profile/{id}")
     public ResponseEntity<RecruiterProfileDTO> getRecruiterProfile(
             @Parameter(description = "ID профиля рекрутера", required = true)
             @PathVariable Long id) {
         return profileService.getProfileById(id)
-                .map(profile -> {
-                    RecruiterProfileDTO dto = mapToRecruiterProfileDTO(profile);
-                    return ResponseEntity.ok(dto);
-                })
+                .map(this::mapToRecruiterProfileDTO)
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @Operation(summary = "Обновить профиль рекрутера по ID")
-    @PatchMapping("/{id}")
+    @PatchMapping("/profile/{id}")
     public ResponseEntity<RecruiterProfileDTO> updateRecruiterProfile(
             @Parameter(description = "ID профиля рекрутера", required = true)
             @PathVariable Long id,
             @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Обновленные данные профиля", required = true,
                     content = @Content(schema = @Schema(implementation = RecruiterProfileDTO.class)))
             @RequestBody RecruiterProfileDTO recruiterProfileDTO) {
-        return profileService.getProfileById(id)
-                .map(profile -> {
-                    profile.setFirstName(recruiterProfileDTO.getFirstName());
-                    profile.setLastName(recruiterProfileDTO.getLastName());
-                    profile.setPosition(recruiterProfileDTO.getPosition());
-                    profile.setPhoto(recruiterProfileDTO.getPhoto());
-                    Profile updatedProfile = profileService.updateProfile(profile);
-                    RecruiterProfileDTO updatedDTO = mapToRecruiterProfileDTO(updatedProfile);
-                    return ResponseEntity.ok(updatedDTO);
-                })
-                .orElse(ResponseEntity.notFound().build());
+        Profile updatedProfile = profileService.updateProfile(id, mapToProfile(recruiterProfileDTO));
+        RecruiterProfileDTO updatedDTO = mapToRecruiterProfileDTO(updatedProfile);
+        return ResponseEntity.ok(updatedDTO);
     }
 
     private RecruiterProfileDTO mapToRecruiterProfileDTO(Profile profile) {
@@ -78,20 +68,27 @@ public class RecruiterController {
         dto.setFirstName(profile.getFirstName());
         dto.setLastName(profile.getLastName());
         dto.setPosition(profile.getPosition());
-        dto.setPhoto(profile.getPhoto());
         return dto;
+    }
+
+    private Profile mapToProfile(RecruiterProfileDTO dto) {
+        Profile profile = new Profile();
+        profile.setFirstName(dto.getFirstName());
+        profile.setLastName(dto.getLastName());
+        profile.setPosition(dto.getPosition());
+        return profile;
     }
 
     @Operation(summary = "Получить все временные слоты")
     @GetMapping("/timeslots")
     public List<TimeSlot> getAllTimeSlots() {
-        return timeSlotService.getAllTimeSlots();
+        return recruiterService.getAllTimeSlots();
     }
 
     @Operation(summary = "Получить доступные временные слоты")
     @GetMapping("/timeslots/available")
     public List<TimeSlot> getAvailableTimeSlots() {
-        return timeSlotService.getAvailableTimeSlots();
+        return recruiterService.getAvailableTimeSlots();
     }
 
     @Operation(summary = "Создать новый временной слот")
@@ -103,7 +100,7 @@ public class RecruiterController {
             @RequestParam LocalDateTime endTime,
             @Parameter(description = "Доступность временного слота", required = true)
             @RequestParam boolean isAvailable) {
-        TimeSlot createdSlot = timeSlotService.createTimeSlot(startTime, endTime, isAvailable);
+        TimeSlot createdSlot = recruiterService.createTimeSlot(startTime, endTime, isAvailable);
         return ResponseEntity.ok(createdSlot);
     }
 
@@ -112,15 +109,13 @@ public class RecruiterController {
     public ResponseEntity<Void> deleteTimeSlot(
             @Parameter(description = "ID временного слота для удаления", required = true)
             @PathVariable Long id) {
-        timeSlotService.deleteTimeSlot(id);
+        recruiterService.deleteTimeSlot(id);
         return ResponseEntity.noContent().build();
     }
 
     @Operation(summary = "Получить все отклики с профилями")
-    @GetMapping("/applicant/{id}")
-    public ResponseEntity<List<Response>> getAllResponsesWithProfile(
-            @Parameter(description = "ID соискателя", required = true)
-            @PathVariable Long id) {
+    @GetMapping("/responses")
+    public ResponseEntity<List<Response>> getAllResponsesWithProfiles() {
         List<Response> responses = responseService.getAllResponsesWithProfile();
         return ResponseEntity.ok(responses);
     }

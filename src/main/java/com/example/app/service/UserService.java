@@ -37,7 +37,9 @@ public class UserService {
                 .build();
         return repository.save(user);
     }
-
+    public User findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
     public User updateUser(Long id, UserDTO userDTO) {
         return repository.findById(id)
                 .map(user -> {
@@ -94,10 +96,8 @@ public class UserService {
     }
 
     public User getByUsername(String username) {
-        return repository.findByUsername(username)
-                .orElseThrow(() -> new MessageException("Пользователь не найден"));
+        return repository.findByUsername(username);
     }
-
     public Optional<User> getUserById(Long id) {
         return repository.findById(id);
     }
