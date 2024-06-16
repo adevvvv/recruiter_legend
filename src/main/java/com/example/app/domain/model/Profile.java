@@ -26,15 +26,4 @@ public class Profile {
     private String vkLink;
     private String telegramLink;
     private String whatsappLink;
-
-    @Lob
-    private byte[] photo;
-
-    @Lob
-    private byte[] resumeFile;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
-
 }

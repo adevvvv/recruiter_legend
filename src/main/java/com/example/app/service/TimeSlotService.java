@@ -2,6 +2,7 @@ package com.example.app.service;
 
 import com.example.app.domain.model.TimeSlot;
 import com.example.app.repository.TimeSlotRepository;
+import com.example.app.utils.MessageException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +23,18 @@ public class TimeSlotService {
         return timeSlotRepository.findByIsAvailable(true);
     }
 
+    public TimeSlot getTimeSlotById(Long id) {
+        return timeSlotRepository.findById(id)
+                .orElseThrow(() -> new MessageException("Временной слот с id " + id + " не найден"));
+    }
+
     public TimeSlot bookTimeSlot(Long id, String username) {
-        TimeSlot timeSlot = timeSlotRepository.findById(id).orElseThrow(() -> new RuntimeException("Time slot not found"));
+        TimeSlot timeSlot = getTimeSlotById(id);
+
         if (!timeSlot.isAvailable()) {
-            throw new RuntimeException("Time slot is already booked");
+            throw new MessageException("Временной слот с id " + id + " уже забронирован");
         }
+
         timeSlot.setAvailable(false);
         timeSlot.setBookedBy(username);
         return timeSlotRepository.save(timeSlot);
@@ -41,6 +49,9 @@ public class TimeSlotService {
     }
 
     public void deleteTimeSlot(Long id) {
+        if (!timeSlotRepository.existsById(id)) {
+            throw new MessageException("Временной слот с id " + id + " не найден");
+        }
         timeSlotRepository.deleteById(id);
     }
 }

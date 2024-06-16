@@ -11,5 +11,4 @@ public class RecruiterProfileDTO {
     private String firstName;
     private String lastName;
     private String position;
-    private byte[] photo;
 }

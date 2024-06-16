@@ -15,21 +15,30 @@ import java.util.Map;
 @Service
 public class NewsService {
 
-    public List<Map<String, String>> getAllNews() throws IOException {
+    public List<Map<String, String>> getAllNews() {
         String url = "https://habr.com/ru/news/";
-        Document doc = Jsoup.connect(url).get();
-        Elements newsElements = doc.select("div.tm-article-snippet.tm-article-snippet");
         List<Map<String, String>> jsonObjects = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            String title = newsElements.get(i).select("h2.tm-title.tm-title_h2").select("span").text();
-            String img = newsElements.get(i).select("img.tm-article-snippet__lead-image").attr("src");
-            String text = newsElements.get(i).select("div.article-formatted-body.article-formatted-body.article-formatted-body_version-2").select("p").text();
+        try {
+            Document doc = Jsoup.connect(url).get();
+            Elements newsElements = doc.select("div.tm-article-snippet.tm-article-snippet");
+            for (int i = 0; i < 10; i++) {
+                try {
+                    String title = newsElements.get(i).select("h2.tm-title.tm-title_h2").select("span").text();
+                    String img = newsElements.get(i).select("img.tm-article-snippet__lead-image").attr("src");
+                    String text = newsElements.get(i).select("div.article-formatted-body.article-formatted-body.article-formatted-body_version-2").select("p").text();
 
-            Map<String, String> jsonObject = new HashMap<>();
-            jsonObject.put("title", title);
-            jsonObject.put("img", img);
-            jsonObject.put("text", text);
-            jsonObjects.add(jsonObject);
+                    Map<String, String> jsonObject = new HashMap<>();
+                    jsonObject.put("title", title);
+                    jsonObject.put("img", img);
+                    jsonObject.put("text", text);
+                    jsonObjects.add(jsonObject);
+                } catch (IndexOutOfBoundsException e) {
+                    System.err.println("Недостаточно новостных элементов на странице: " + e.getMessage());
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Ошибка при подключении к " + url + ": " + e.getMessage());
         }
         return jsonObjects;
     }
