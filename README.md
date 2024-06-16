@@ -11,10 +11,8 @@
 ```
 git clone https://github.com/adevvvv/recruiter_legend
 ```
-Открой проект в терминале и запусти команды (убедись, что у тебя установлен Docker и Nodejs):
+Открой проект в терминале и запусти команды (убедись, что у тебя установлен Docker):
 ```
-npm install
-npm run build
 docker-compose up --build
 ```
 
