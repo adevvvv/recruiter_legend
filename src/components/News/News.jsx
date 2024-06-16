@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../main.jsx';
 import { useQuery } from 'react-query';
 import Plus from '../Common/Plus.jsx';
- import  Spinner  from '../Spinner/Spinner.jsx';
+import Spinner from '../Spinner/Spinner.jsx';
 
 const News = () => {
   const { store } = useContext(Context);
@@ -72,10 +72,8 @@ const News = () => {
   });
 
   useEffect(() => {
-  
     if (data) {
       setNews(data);
-    
     }
   }, [data]);
 
@@ -84,7 +82,6 @@ const News = () => {
   }
 
   return (
-     
     <div className={styles['container']}>
       <div
         style={{

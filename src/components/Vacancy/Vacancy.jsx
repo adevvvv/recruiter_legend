@@ -132,7 +132,9 @@ const Vacancy = () => {
     },
   ]);
 
-  const { data, status } = useQuery(['getVacancies'], () => store.getVacancies());
+  const { data, status } = useQuery(['getVacancies'], () =>
+    store.getVacancies(),
+  );
 
   useEffect(() => {
     if (data) {
@@ -231,7 +233,7 @@ const Vacancy = () => {
   if (loading) {
     return <Spinner />;
   }
-  
+
   return (
     <div>
       <div className={styles['container']}>
