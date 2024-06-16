@@ -4,6 +4,7 @@ import AuthService from '../utils/AuthService';
 import axios from 'axios';
 import { API_URL } from '../http';
 import Vacancies from "../utils/vacancies.js";
+import ApplicantService from '../utils/ApplicantService.js';
 
 // const history = createBrowserHistory();
 
@@ -16,7 +17,7 @@ export default class Store {
   };
 
   isAuth = false;
-  isAnketaExist = false;
+  isResumeExist = false;
   errorRegistration = '';
 
   constructor() {
@@ -40,6 +41,10 @@ export default class Store {
   setTokens({ access }) {
     this.userData.access = access;
     localStorage.setItem('token', access);
+  }
+
+  setIsResumeExist(bool) {
+    this.isResumeExist = bool;
   }
 
   async login(username, password) {
@@ -111,6 +116,20 @@ export default class Store {
   async getVacancies() {
     try {
       const response = await Vacancies.getVacancies();
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
+
+  async postResume(dataResume) {
+    try {
+      console.log(dataResume);
+      const response = await ApplicantService.sendAnketa(dataResume);
+      this.setIsResumeExist(true);
+      console.log(response);
       return response;
     } catch (error) {
       console.log(error);

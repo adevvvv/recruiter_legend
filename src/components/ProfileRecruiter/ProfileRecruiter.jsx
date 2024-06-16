@@ -1,5 +1,5 @@
 import CalendarRecruiter from '../Calendar/CalendarRecruiter.jsx';
-import Header from '../Header/Header.jsx';
+// import Header from '../Header/Header.jsx';
 import styles from './ProfileRecruiter.module.scss';
 import RecruiterInfo from './RecruiterInfo.jsx';
 import profile2 from '../../assets/image/profile2.svg';

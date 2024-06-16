@@ -5,8 +5,8 @@ import { useContext } from 'react';
 import { Context } from '../../../main';
 import recsoft from '../../../assets/image/reksoft-1 1.svg';
 
-const CardVacancy = () => {
 
+const CardVacancy = ({title, type}) => {
     const { store } = useContext(Context);
 
     const handleEdit = () => {
@@ -16,8 +16,6 @@ const CardVacancy = () => {
       const handleApply = () => {
         // Ваш код для отклика на вакансию
       };
-const CardVacancy = ({title, type}) => {
-
     return (
         <div className={styles['container']}>
             <h1>{title}</h1>
@@ -33,7 +31,7 @@ const CardVacancy = ({title, type}) => {
             </div>
 
             <div style={{display:'flex', alignItems: 'center', marginTop:'30px', gap:'30px'}}>
-                 {store.userData.role === 'ROLE_RECRUITER' && <button onClick={handleEdit}>Редактировать</button>}
+                 {store.userData.role === 'ROLE_RECRUITER' && <button onClick={handleEdit} style={{margin:'0'}}>Редактировать</button>}
                  {store.userData.role=== 'ROLE_APPLICANT' && <><button onClick={handleApply} style={{margin:'0'}}>Откликнуться</button>
                  <img src={heart} alt="like"/></>}
                 {/* <img src={heart} alt="like"/> */}

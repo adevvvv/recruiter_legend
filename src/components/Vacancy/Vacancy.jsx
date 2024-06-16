@@ -141,14 +141,14 @@ const Vacancy = () => {
                     <select name="sort" id="sort">
                         {
                             sort.map((el, i) =>
-                                <option value={el}>{el}</option>)
+                                <option key={i} value={el}>{el}</option>)
                         }
                     </select>
 
                     <select name="filter" id="filter">
                         {
                             filter.map((el, i) =>
-                                <option value={el}>{el}</option>)
+                                <option key={i} value={el}>{el}</option>)
                         }
                     </select>
                 </div>
@@ -159,12 +159,12 @@ const Vacancy = () => {
                         {
                             checkbox.map((el, i) => {
                                 return (
-                                    <div className={styles['filter']}>
+                                    <div key={i} className={styles['filter']}>
                                         <p>{el.title}</p>
                                         {
                                             el.date.map((variant, i) => {
                                                 return (
-                                                    <div style={{display:'flex', justifyContent:'left', gap:'5px'}}>
+                                                    <div key={i} style={{display:'flex', justifyContent:'left', gap:'5px'}}>
                                                         <input id={variant} name={el.title} type="radio"/>
                                                         <label htmlFor={variant}>{variant}</label>
                                                     </div>

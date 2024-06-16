@@ -1,12 +1,15 @@
 import styles from './Anketa.module.scss';
 import Plus from '../Common/Plus.jsx';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import BlockInput from './Input/BlockInput.jsx';
 import Header from '../Header/Header.jsx';
 import BlockSelect from './select/BlockSelect.jsx';
 import WorkExperience from './workExperience/workExperience.jsx';
+import { Context } from '../../main.jsx';
 
 const Anketa = () => {
+
+  const { store } = useContext(Context);
   const [dataResume, setDataResume] = useState({
     id: 0,
     lastName: '',
@@ -442,11 +445,8 @@ const Anketa = () => {
 
   const handleSubmit = async () => {
     // отправка данных на сервер
-
-    console.log(dataResume);
-
     getData();
-
+    await store.postResume(dataResume);
     console.log(data);
   };
 
