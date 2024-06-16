@@ -426,13 +426,13 @@ const Anketa = () => {
   };
 
   const [work, setWork] = useState([
-    <WorkExperience handleChange={handleChange} />,
+    <WorkExperience key={0} handleChange={handleChange} />,
   ]);
 
   const addWorkExperience = () => {
     setWork((work) => [
       ...work,
-      <WorkExperience handleChange={handleChange} />,
+      <WorkExperience key={work.length} handleChange={handleChange} />,
     ]);
   };
 
