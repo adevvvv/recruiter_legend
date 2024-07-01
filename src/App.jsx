@@ -4,7 +4,7 @@ import EnterForm from './components/Forms/EnterForm/EnterForm.jsx';
 import { Route, Routes } from 'react-router-dom';
 import Calendar from './components/Calendar/Calendar.jsx';
 // import ProfileApplicant from './components/ProfileApplicant/ProfileApplicant.jsx';
-// import BaseInfo from './components/ProfileApplicant/BaseInfo.jsx';
+import BaseInfo from './components/ProfileApplicant/BaseInfo.jsx';
 // import Anketa from './components/Anketa/Anketa.jsx';
 import Vacancy from './components/Vacancy/Vacancy.jsx';
 // import Resume from './components/ProfileApplicant/Resume.jsx';
@@ -39,11 +39,11 @@ function App() {
           <Route path="/*" element={<Main />} />
           <Route path="/auth/login" element={<EnterForm />} />
           <Route path="/calendar" element={<Calendar />} />
-          {/* <Route path="/applicant" element={<ProfileApplicant />} />
-          <Route path="/applicantinfo" element={<BaseInfo />} /> */}
+          {/* <Route path="/applicant" element={<ProfileApplicant />} /> */}
+           <Route path="/applicantinfo" element={<BaseInfo />} />
           <Route path="/auth/register" element={<RegistrationForm />} />
-          {/* <Route path="/resume" element={<Resume />} />
-          <Route path="/anketa" element={<Anketa />} /> */}
+          {/* <Route path="/resume" element={<Resume />} /> */}
+          <Route path="/anketa" element={<Anketa />} />
           {/* <Route path="/recruiter" element={<ProfileRecruiter />} />
           <Route path="/responsecard" element={<ResponseCard />} /> */}
           <Route path="/vacancy" element={<Vacancy />} />

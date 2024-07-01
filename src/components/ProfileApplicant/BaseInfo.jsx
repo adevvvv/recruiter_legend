@@ -6,6 +6,7 @@ import telegram from '../../assets/image/telegram.png';
 import { useState } from 'react';
 import { ButtonWithChain } from '../Common/buttons';
 
+// eslint-disable-next-line react/prop-types
 const BaseInfo = ({ setIsFormInfo }) => {
   const [formData, setFormData] = useState({
     name: 'username',
@@ -123,6 +124,7 @@ const BaseInfo = ({ setIsFormInfo }) => {
               <img src={telegram} alt="telegram" />
             </a>
           </div>
+          <button style={{ margin: 'auto', backgroundColor:'rgba(255, 255, 255, 1)', color:'rgba(87, 117, 205, 1)', marginLeft:'25%'}}>Сохранить</button>
         </div>
       </div>
     </div>
